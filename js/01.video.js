@@ -21,7 +21,12 @@ function onResize() {
 	var windowWidth = $(this).innerWidth()
 	var videoWidth = $video.innerWidth();
 	if (windowWidth < videoWidth) {
-		$video.css.removeClass
+		$video.css({ 'width': '100%', 'height': 'auto' })
+		//즉 윈도우의 크기가 동영상의 크기보다 작으면 너비값을 100%로 맞춰라
+
+	}
+	else {
+		$video.css({ 'height': '100%', 'width': 'auto' })
 	}
 }
 
