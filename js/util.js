@@ -3,9 +3,9 @@
 
 
 /*************** Scroll Spy *****************/
-function spyScroll(el, cls, _gap) {
-	$(window).scroll(onSpyScroll).trigger('scroll')
-	function onSpyScroll() {
+function scrollSpy(el, cls, _gap) {
+	$(window).scroll(onscrollSpy).trigger('scroll')
+	function onScrollSpy() {
 		var scrollTop = $(this).scrollTop()
 		var pageOffset = []
 		var page
