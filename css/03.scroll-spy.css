@@ -21,4 +21,7 @@
 }
 .content.active {
   opacity: 1;
+  animation-name: bounce;
+  animation-duration: 2s;
+  animation-delay: 1s;
 }
