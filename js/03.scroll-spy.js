@@ -18,22 +18,20 @@ $(window).scroll(onScroll)
 function onScroll() {
 	var windowHeight = $(this).innerHeight();
 	var pageOffset = []
-
+// console.log('windowHeight:', windowHeight)
+// console.log('scrollTop:', scrollTop)
+// console.log('pageOffset:', pageOffset)
 	var scrollTop = $(this).scrollTop()
 	for (var i = 0; i < $('.page').length; i++){ //page의 개수만큼 반복문
 		pageOffset[i] = $('.page').eq(i).offset().top//문서로부터 page가 떨어져있는 간격을 pageOffest 배열에 넣는다(페이지와 페이지 옵셋값끼리)
 
-		if (scrollTop > pageOffset[3]) {
-			
+		if (scrollTop >= pageOffset[3]) {		
 		}
-		else if (scrollTop > pageOffset[2]) {
-			
+		else if (scrollTop >= pageOffset[2]) {			
 		}
-		else if (scrollTop > pageOffset[1]) {
-			
+		else if (scrollTop >= pageOffset[1]) {
 		}
-		else {
-			
+		else {			
 		}
 	}
 }
