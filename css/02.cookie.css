@@ -15,6 +15,8 @@
   position: absolute;
   top: 50%;
   left: 50%;
+  /* top과 translate의 좌표값을 혼동하면 안된다. top의 기준은 .modal-wrap의 부모인
+	 .moda-wrapper의 위치에서 상속받는 것이고 translate의 좌표값은 윈도우에서의 좌표이다! */
   transform: translate(-50%, -100vh);
   transition: all 0.75s;
 }
