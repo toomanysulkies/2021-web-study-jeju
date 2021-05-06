@@ -25,7 +25,7 @@
 ## CSS - CSS 관리
 - css()
 - addClass(), removeCalss(), toggleClass(), hasClass()
-- Dimension
+## Dimension
 - width(), innerWidth(), outerWidth(), outerWidth(true)
 - height(), innerHeight(), innerWidth(), innerWidth(true) ,scrollTop
 ## 통신Ajax(Asynchronous javascript and xml)
