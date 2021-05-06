@@ -1,0 +1,20 @@
+.page1 {
+  min-height: 100vh;
+  background-color: rgb(17, 121, 112);
+}
+.page2 {
+  min-height: 150vh;
+  background-color: rgb(122, 121, 15);
+}
+.page3 {
+  min-height: 70vh;
+  background-color: rgb(175, 128, 150);
+}
+.page4 {
+  min-height: 120vh;
+  background-color: rgb(185, 144, 91);
+}
+
+.content {
+  opacity: 0;
+}

@@ -27,7 +27,7 @@
 - addClass(), removeCalss(), toggleClass(), hasClass()
 - Dimension
 - width(), innerWidth(), outerWidth(), outerWidth(true)
-- height(), innerHeight(), innerWidth(), innerWidth(true)
+- height(), innerHeight(), innerWidth(), innerWidth(true) ,scrollTop
 ## 통신Ajax(Asynchronous javascript and xml)
 - $.get(), $.post(), $.ajax()
 
