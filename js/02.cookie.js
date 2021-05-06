@@ -2,8 +2,8 @@
 init()
 
 /*************** 사용자 함수 *****************/
-function init()
-{
+function init() {
+    if ($.cookie('modalOpen') !=='Y') //(3)cookie에 modalOpen의 값이 Y이면 onModalShow실행
 
 	setTimeout(onModalShow,2000)
 	
@@ -12,8 +12,15 @@ function init()
 /*************** 이벤트 등록 *****************/
 $('.bt-close').click(onModalHide)
 $('.bt-open').click(onModalShow)
+$('.bt-day').click(onModalDay)//(1)오늘은 그만보기를 누르면 onModalDay 실행
 
 /*************** 이벤트 콜백 *****************/
+
+function onModalDay() { 
+    $.cookie('modalOpen', 'Y', { expires: 1, path: '/' })// (2-1)onModalDay가 실행되면 modalOpen는  하루가 지나면 만료되는 'Y' 값을 가진다.
+    onModalHide() //(2-2)그리고 onModalHide를 실행한다
+}
+
 
 function onModalShow() {
 	$('.modal-wrapper').show()
@@ -35,3 +42,4 @@ function onModalHide() {
     //attr은 비속성 프로퍼티에 접근할 수 있게 해준다.
     //onModalHide가 실행되면 .modal-wrapper와 . modal-wrap의 style값 사라져 보이지 않게 된다.
 }
+
