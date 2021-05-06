@@ -22,9 +22,20 @@ function onScroll() {
 // console.log('scrollTop:', scrollTop)
 // console.log('pageOffset:', pageOffset)
 	var scrollTop = $(this).scrollTop()
-	for (var i = 0; i < $('.page').length; i++){ //page의 개수만큼 반복문
-		pageOffset[i] = $('.page').eq(i).offset().top//문서로부터 page가 떨어져있는 간격을 pageOffest 배열에 넣는다(페이지와 페이지 옵셋값끼리)
-
+	/*for (var i = 0; i < $('.page').length; i++){ //page의 개수만큼 반복문
+		pageOffset[i] = $('.page').eq(i).offset().top//문서로부터 page가 떨어져있는 간격을 pageOffset 배열에 넣는다(페이지와 페이지 옵셋값끼리)*/
+		var page
+		$('.page').each(function(i){ //각각의 page의 top offset값이 배열에 적용된다
+		pageOffset[i] = $(this).offset().top
+		})
+		
+		for(var i=1; i<pageOffset.length; i++) { //배열 안에서 인덱스 값이 하나씩 증가한다
+		if(scrollTop < pageOffset[i]) break;//배열의 상단 옵셋값보다 스크롤값이 작으면 멈춘다. 예)
+	}
+	page = i 
+	console.log(page)
+}
+/*
 		if (scrollTop >= pageOffset[3]) {		
 		}
 		else if (scrollTop >= pageOffset[2]) {			
@@ -34,4 +45,4 @@ function onScroll() {
 		else {			
 		}
 	}
-}
+*/
