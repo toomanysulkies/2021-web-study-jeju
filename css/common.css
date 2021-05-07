@@ -12,20 +12,35 @@ body {
 .bt-ghost {
     padding: 0.875em 1.5em;
     border: 1px solid #999;
-    color: #f9f9f9;
+    color: #fff;
     transition: all 0.5s;
 }
 .bt-ghost:hover {
-    background-color: #f9f9f9;
+    background-color: #fff;
     color: #b38859;
+}
+.bt-ghost.gold {
+    border: 1px solid#fff;
+}
+
+.bt-ghost.gold:hover {
+    background-color: #b38859;
+    color: #fff;   ! important;
+    
 }
 .bt-anchor {
     text-decoration: underline;
 }
 /**********************header-wrapper  *********************/
 .header-wrapper {
+    font-size: 1em;
+    position: fixed;
+    width: 100%;
+}
+
+.header-wrapper .notice-wrapper {
     background-color: #28354b;
-    color: #f9f9f9;
+    color: #fff;
 }
 
 .header-wrapper .notice-wrap {
@@ -46,7 +61,11 @@ body {
     font-size: 1.75em;
     cursor: pointer;
 }
-.header-wrapper .notice-wrap > .bt-down {
+.header-wrapper .notice-wrap > .bt-hide {
+    cursor: pointer;
+    margin-right: auto;
+}
+.header-wrapper .notice-wrap > .bt-show {
     cursor: pointer;
     margin-right: auto;
 }
@@ -62,11 +81,119 @@ body {
 .header-wrapper .notice-content > .bt-wrap {
     display: flex;
     justify-content: space-between;
-    padding-bottom: 1em;
+    padding-bottom: 2em;
     align-items: flex-end;
 }
-.header-wrapper .notice-content .bt-today {
-    color: #f9f9f9;
+.header-wrapper > .notice-content .bt-today {
+    color: #fff;
+}
+.header-wrapper > .top-wrapper {
+    color: #fff;
+}
+.header-wrapper .top-wrapper:hover {
+    color: rgba(0, 0, 0, 0.5);
+    background-color: #fff;
+}
+.header-wrapper .top-wrapper:hover .link-wrapper {
+    border-bottom: 1px solid #ddd;
+}
+.header-wrapper .link-wrapper {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.header-wrapper .link-wrap {
+    padding: 1em 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.header-wrapper .link-wrap > .link {
+    font-weight: 300;
+    user-select: none;
+}
+.header-wrapper .link-wrap > .link:hover {
+    color: rgba(0, 0, 0, 0.8);
+}
+.header-wrapper .link-wrap > .link:not(.link-lang) {
+    padding: 0 1.5em;
+    border-right: 1px solid #ddd;
+}
+.header-wrapper .link-wrap > .link-lang {
+    padding-left: 1.5em;
+    position: relative;
+}
+.header-wrapper .link-lang > .sel-lang {
+    cursor: pointer;
+}
+.header-wrapper .link-lang > .sel-lang > .bt-lang::before {
+    transition: transform 0.3s;
+    font-size: 0.75em;
+}
+.header-wrapper .link-lang > .hover-lang {
+    background-color: #fff;
+    display: none;
+    color: inherit;
+    position: relative;
+    min-width: 100%;
+    padding: 1em;
+    position: absolute;
+    left: 0.5em;
+    cursor: pointer;
+}
+.header-wrapper .link-lang > .hover-lang .lang {
+    margin-top: 0.75em;
+}
+
+.header-wrapper .link-lang:hover > .hover-lang {
+    display: block;
+}
+.header-wrapper .link-lang:hover .bt-lang::before {
+    transform: rotate(180deg);
+}
+
+
+.header-wrappe > .top-wrapper:hover .logo-white {
+    display: none;
+}
+.header-wrapper > .top-wrapper:hover .logo-color {
+    display: inline-block;
+}
+.header-wrapper > .top-wrapper:hover .bt-ghost.gold {
+    color: #b38859;    border: 1px solid#b38859;
+}
+.header-wrapper .navi-wrapper > .wrapper {
+    display: flex; padding: 1.5em 0; 
+}
+.header-wrapper .logo-wrap {
+    order: 2;
+    flex: 0 0 254px;
+}
+.header-wrapper .logo-wrap .logo-color {
+  display: none;
+}
+.header-wrapper .navi-wrap {display: flex; align-items: center;
+    flex: 0 0 calc(50% - 127px);
+}
+.header-wrapper .navi-wrap-lt {
+    order: 1;
+  
+}
+.header-wrapper .navi-wrap-rt {
+    order: 3;
+    display: flex;
+    justify-content: flex-end;
+ 
+}
+
+.header-wrapper .navi-wrap .navi {
+    margin: 0 2em;
+}
+
+.header-wrapper .navi-wrap .navi:first-child {
+    margin-left: 0;
+}
+
+.header-wrapper .navi-wrap .navi:last-child{
+    margin-right: 0 ;
 }
 /**********************footer-wrapper  *********************/
 /**********************modal-wrapper  *********************/
@@ -74,7 +201,7 @@ body {
 /********************** 반응형 설정 *********************/
 @media (max-width: 1399px) {
     .wrapper {
-        max-width: calc(1100%-2rem);
+        max-width: calc(100%-2rem);
         margin: 0 1rem;
     }
 }

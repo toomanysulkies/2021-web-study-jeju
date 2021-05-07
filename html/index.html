@@ -14,6 +14,7 @@
 	<link rel="stylesheet" href="../css/common.css">
 	<link rel="stylesheet" href="../css/index.css">
 	<script src="../js/jquery-3.6.0.min.js"></script>
+	<script src="../js/jquery.cookie.js"></script>
 	<script src="../js/bootstrap.min.js"></script>
 	<script src="../js/util.js"></script>
 </head>
@@ -25,7 +26,8 @@
 			<div class="notice-wrap wrapper">
 				<h2 class="notice-bullet">공지</h2>
 				<h3 class="notice-title">위생관련 공지사항</h3>
-				<i class="bt-down bi bi-chevron-down"></i>
+				<i class="bt-hide bi bi-chevron-up"></i>
+				<i class="bt-show bi bi-chevron-down"></i>
 				<i class="bt-close bi-x"></i>
 			</div>
 			<div class="notice-content wrapper">
@@ -37,13 +39,49 @@
 				</div>
 			</div>
 		</div>
-		<div class="top-wrapper"></div>
-		<div class="navi-wrapper"></div>
+		<div class="top-wrapper">
+			<div class="link-wrapper">
+				<div class="wrapper">
+					<ul class="link-wrap">
+						<li class="link"><a href="#">로그인</a></li>
+						<li class="link"><a href="#">About Us</a></li>
+						<li class="link"><a href="#">오시는 길</a></li>
+						<li class="link link-lang">
+							<div class="sel-lang"><span>한국어</span> <i class="bt-lang bi-chevron-down"></i></div>
+							<div class="hover-lang">
+								<div class="lang">English</div>
+								<div class="lang">Japanese</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="navi-wrapper">
+				<div class="wrapper">
+					<h1 class="logo-wrap">
+						<a class="logo">
+							<img class="logo-white mw-100" src="../img/common/logo-white.png" alt="로고">
+							<img class="logo-color mw-100" src="../img/common/logo-color.png" alt="로고">
+						</a>
+					</h1>
+					<ul class="navi-wrap navi-wrap-lt">
+						<li class="navi"><a href="#">OFFERS</a></li>
+						<li class="navi"><a href="#">STAY</a></li>
+						<li class="navi"><a href="#">WINE & DINE</a></li>
+					</ul>
+					<ul class="navi-wrap navi-wrap-rt">
+						<li class="navi"><a href="#">THINGS TO DO</a></li>
+						<li class="navi"><button class="bt-book bt-ghost gold">BOOK NOW</button></li>
+					</ul>
+				</div>
+			</div>
+		</div>
 
 	</header>
 
 	<!-- main-wrapper -->
 	<section class="main-wrapper">
+		<img src="../img/index/main02.jpg" alt="메인배너" class="w-100">
 
 	</section>
 
@@ -97,6 +135,7 @@
 	</section>
 
 	<script src="../js/index.js"></script>
+	<script src="../js/common.js"></script>
 </body>
 
 </html>
