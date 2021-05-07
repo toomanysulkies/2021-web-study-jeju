@@ -1,4 +1,8 @@
 /********************** 글로벌 설정 *********************/
+html,
+body {
+  height: 20000px;
+}
 .wrapper {
   max-width: 1200px;
   margin: auto;
@@ -11,12 +15,12 @@
 
 .navi-wrapper {
   display: flex;
+  justify-content: space-between;
 }
 .navi-wrapper > .logo {
 }
 .navi-wrapper > .navi-wrap {
   display: flex;
-  margin-left: auto;
 }
 .navi-wrapper > .navi-wrap > .navi {
 }
@@ -27,8 +31,6 @@
 .header-wrapper .logo:hover {
   background-color: #444;
   color: #f9f9f9;
-}
-.header-wrapper .navi-wrap {
 }
 .header-wrapper .navi-wrap .navi {
   padding: 1em 1.5em;
@@ -69,7 +71,6 @@
 }
 
 /********* flex options **********/
-
 .box-wrapper {
   display: flex;
   flex-wrap: wrap;
@@ -144,10 +145,57 @@
 .box-wrapper.box-wrapper13 {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
 }
 .box-wrapper.box-wrapper14 {
   display: flex;
   flex-direction: column-reverse;
+  justify-content: center;
+  align-items: center;
+}
+
+/********* justify-items **********/
+.box-wrapper.sample4 {
+  height: 500px;
+  justify-content: center;
+  align-items: center;
+}
+.box-wrapper.sample4 > .box {
+  width: 120px;
+  height: 80px;
+  font-size: 1em;
+  border-width: 3px;
+}
+
+.box-wrapper.box-wrapper15 {
+  align-content: normal;
+}
+.box-wrapper.box-wrapper16 {
+  align-content: center;
+}
+.box-wrapper.box-wrapper17 {
+  align-content: flex-start;
+}
+.box-wrapper.box-wrapper18 {
+  align-content: flex-end;
+}
+.box-wrapper.box-wrapper19 {
+  align-content: space-between;
+}
+.box-wrapper.box-wrapper20 {
+  align-content: space-around;
+}
+.box-wrapper.box-wrapper21 {
+  align-content: space-evenly;
+}
+.box-wrapper.box-wrapper22 {
+  align-content: stretch;
+  align-items: stretch;
+}
+
+.box-wrapper.box-wrapper22 > .box {
+  height: auto;
 }
 
 /********************** 반응형 설정 *********************/
