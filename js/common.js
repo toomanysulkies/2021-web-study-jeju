@@ -10,6 +10,29 @@ function initCommon() {
 		$('.notice-wrapper').find('.bt-hide').hide()
 	}
 }
+
+function sctollNotice(scTop) {
+	var noticeHeight = $('.notice-wrapper').outerHeight()
+		if (scTop > 0){
+		$('.notice-wrapper').hide()
+	$('.header-wrapper').css('top', noticeHeight + 'px')
+   }
+	else {
+	$('.notice-wrapper').show()
+	$('.header-wrapper').css('top', 'unset')
+	}
+}
+function scrollHeader(scTop) {
+		var headerGap = $('.header-wrapper').outerHeight()
+		if (headerGap < scTop) {
+		$('.header-wrapper').css({
+			'position': 'fixed', 'top': 0})
+	}
+	else {
+		$('.header-wrapper').css({
+			'position': 'absolute', 'top': 'unset'})
+	}
+}
 /*******************/
 
 
@@ -24,13 +47,12 @@ $('.header-wrapper .link-lang').click(onToggleLang)
 $('.header-wrapper .link-lang').mouseleave(onHideLang)
 $('.header-wrapper .link-lang .lang').click(onChangeLang)
 /*************** 이벤트 콜백 *****************/
-function onScroll(e)
-{
+function onScroll(e) {
 	var scTop = $(this).scrollTop()
-	var noticeGap = 5
-/**********notice-wrapper제어****************/
-	
+  scrollNotice(scTop)
+  scrolHeader(scTop)
 }
+   
 function onShowNotice() {
 	$('.notice-wrapper').find('.bt-show').hide()
 	$('.notice-wrapper').find('.bt-hide').show()

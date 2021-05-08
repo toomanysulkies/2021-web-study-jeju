@@ -37,6 +37,7 @@ body {
     background-color: #28354b;
     color: #fff;
     width: 100%;
+    transition: top 0.1s;
 }
 
 .notice-wrapper .notice-wrap {
