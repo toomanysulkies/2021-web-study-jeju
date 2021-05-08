@@ -4,6 +4,7 @@ html,
 body {
     font-size: 16px;
     font-family: "Noto Sans KR", sans-serif;
+    height: 2000px;
 }
 .wrapper {
     max-width: 1368px;
@@ -86,16 +87,16 @@ body {
 /********************************header-wrapper*****************************************/
 .header-wrapper {
     font-size: 1em;
-    /* position: fixed; */
-}
-.header-wrapper > .top-wrapper {
     color: #fff;
+    position: absolute;
+    width: 100%;
 }
-.header-wrapper .top-wrapper:hover {
+
+.header-wrapper:hover {
     color: rgba(0, 0, 0, 0.5);
     background-color: #fff;
 }
-.header-wrapper .top-wrapper:hover .link-wrapper {
+.header-wrapper:hover .link-wrapper {
     border-bottom: 1px solid #ddd;
 }
 .header-wrapper .link-wrapper {
@@ -151,24 +152,24 @@ body {
     transform: rotate(180deg);
 }
 
-.header-wrapper > .top-wrapper:hover .logo-white {
+.header-wrapper:hover .logo-white {
     display: none;
 }
-.header-wrapper > .top-wrapper:hover .logo-color {
+.header-wrapper:hover .logo-color {
     display: inline-block;
 }
-.header-wrapper > .top-wrapper:hover .bt-ghost.gold {
+.header-wrapper:hover .bt-ghost.gold {
     color: #b38859;
     border: 1px solid#b38859;
 }
-.header-wrapper > .top-wrapper:hover .bt-ghost.gold:hover {
+.header-wrapper:hover .bt-ghost.gold:hover {
     color: #f9f9f9;
 }
-.header-wrapper > .top-wrapper:hover .navi:hover {
+.header-wrapper:hover .navi:hover {
     font-weight: 500;
     color: #b38859;
 }
-.header-wrapper > .top-wrapper:hover .navi {
+.header-wrapper:hover .navi {
     text-shadow: none;
     color: #111;
 }
@@ -180,7 +181,7 @@ body {
     order: 2;
     flex: 0 0 254px;
 }
-.header-wrapper .logo-wrap .logo-color {
+.header-wrapper .logo-color {
     display: none;
 }
 .header-wrapper .navi-wrap {
@@ -197,16 +198,16 @@ body {
     justify-content: flex-end;
 }
 
-.header-wrapper .navi-wrap > .navi {
+.header-wrapper .navi {
     margin: 0 2em;
     text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
-.header-wrapper .navi-wrap > .navi:first-child {
+.header-wrapper .navi:first-child {
     margin-left: 0;
 }
 
-.header-wrapper .navi-wrap > .navi:last-child {
+.header-wrapper .navi:last-child {
     margin-right: 0;
 }
 /**********************footer-wrapper  *********************/
