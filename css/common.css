@@ -13,7 +13,7 @@ body {
     padding: 0.875em 1.5em;
     border: 1px solid #999;
     color: #fff;
-    transition: all 0.5s;
+    transition: all 0.2s;
 }
 .bt-ghost:hover {
     background-color: #fff;
@@ -25,67 +25,68 @@ body {
 
 .bt-ghost.gold:hover {
     background-color: #b38859;
-    color: #fff;   ! important;
-    
+    color: #fff;
 }
 .bt-anchor {
     text-decoration: underline;
 }
-/**********************header-wrapper  *********************/
-.header-wrapper {
-    font-size: 1em;
-    position: fixed;
+/**********************.notice-wrapper  *********************/
+
+.notice-wrapper {
+    background-color: #28354b;
+    color: #fff;
     width: 100%;
 }
 
-.header-wrapper .notice-wrapper {
-    background-color: #28354b;
-    color: #fff;
-}
-
-.header-wrapper .notice-wrap {
+.notice-wrapper .notice-wrap {
     display: flex;
     padding: 1em 0;
     align-items: center;
 }
-.header-wrapper .notice-wrap > .notice-bullet {
+.notice-wrapper .notice-wrap > .notice-bullet {
     font-size: 0.875em;
     color: #b38859;
     width: 4rem;
 }
-.header-wrapper .notice-wrap > .notice-title {
+.notice-wrapper .notice-wrap > .notice-title {
     font-size: 1.25em;
     margin-right: 0.5rem;
 }
-.header-wrapper .notice-wrap > .bt-close {
+.notice-wrapper .notice-wrap > .bt-close {
     font-size: 1.75em;
     cursor: pointer;
 }
-.header-wrapper .notice-wrap > .bt-hide {
+.notice-wrapper .notice-wrap > .bt-hide {
     cursor: pointer;
     margin-right: auto;
 }
-.header-wrapper .notice-wrap > .bt-show {
+.notice-wrapper .notice-wrap > .bt-show {
     cursor: pointer;
     margin-right: auto;
 }
-.header-wrapper .notice-content {
+.notice-wrapper .notice-content {
     padding-left: 4rem;
 }
-.header-wrapper .notice-content > .content {
+.notice-wrapper .notice-content > .content {
     font-size: 1.125em;
     line-height: 1.5;
     color: #bbb;
     margin-bottom: 1.5em;
 }
-.header-wrapper .notice-content > .bt-wrap {
+.notice-wrapper .notice-content > .bt-wrap {
     display: flex;
     justify-content: space-between;
     padding-bottom: 2em;
     align-items: flex-end;
 }
-.header-wrapper > .notice-content .bt-today {
+.notice-wrapper > .notice-content .bt-today {
     color: #fff;
+}
+
+/********************************header-wrapper*****************************************/
+.header-wrapper {
+    font-size: 1em;
+    /* position: fixed; */
 }
 .header-wrapper > .top-wrapper {
     color: #fff;
@@ -150,50 +151,63 @@ body {
     transform: rotate(180deg);
 }
 
-
-.header-wrappe > .top-wrapper:hover .logo-white {
+.header-wrapper > .top-wrapper:hover .logo-white {
     display: none;
 }
 .header-wrapper > .top-wrapper:hover .logo-color {
     display: inline-block;
 }
 .header-wrapper > .top-wrapper:hover .bt-ghost.gold {
-    color: #b38859;    border: 1px solid#b38859;
+    color: #b38859;
+    border: 1px solid#b38859;
+}
+.header-wrapper > .top-wrapper:hover .bt-ghost.gold:hover {
+    color: #f9f9f9;
+}
+.header-wrapper > .top-wrapper:hover .navi:hover {
+    font-weight: 500;
+    color: #b38859;
+}
+.header-wrapper > .top-wrapper:hover .navi {
+    text-shadow: none;
+    color: #111;
 }
 .header-wrapper .navi-wrapper > .wrapper {
-    display: flex; padding: 1.5em 0; 
+    display: flex;
+    padding: 1.5em 0;
 }
 .header-wrapper .logo-wrap {
     order: 2;
     flex: 0 0 254px;
 }
 .header-wrapper .logo-wrap .logo-color {
-  display: none;
+    display: none;
 }
-.header-wrapper .navi-wrap {display: flex; align-items: center;
+.header-wrapper .navi-wrap {
+    display: flex;
+    align-items: center;
     flex: 0 0 calc(50% - 127px);
 }
 .header-wrapper .navi-wrap-lt {
     order: 1;
-  
 }
 .header-wrapper .navi-wrap-rt {
     order: 3;
     display: flex;
     justify-content: flex-end;
- 
 }
 
-.header-wrapper .navi-wrap .navi {
+.header-wrapper .navi-wrap > .navi {
     margin: 0 2em;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
-.header-wrapper .navi-wrap .navi:first-child {
+.header-wrapper .navi-wrap > .navi:first-child {
     margin-left: 0;
 }
 
-.header-wrapper .navi-wrap .navi:last-child{
-    margin-right: 0 ;
+.header-wrapper .navi-wrap > .navi:last-child {
+    margin-right: 0;
 }
 /**********************footer-wrapper  *********************/
 /**********************modal-wrapper  *********************/
