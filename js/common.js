@@ -11,11 +11,12 @@ function initCommon() {
 	}
 }
 
-function sctollNotice(scTop) {
+function scrollNotice(scTop) {
 	var noticeHeight = $('.notice-wrapper').outerHeight()
+	var linkHeight = $('.link-wrapper').outerHeight()
 		if (scTop > 0){
 		$('.notice-wrapper').hide()
-	$('.header-wrapper').css('top', noticeHeight + 'px')
+	$('.header-wrapper').css('top', scTop-linkHeight + 'px')
    }
 	else {
 	$('.notice-wrapper').show()
@@ -33,8 +34,6 @@ function scrollHeader(scTop) {
 			'position': 'absolute', 'top': 'unset'})
 	}
 }
-/*******************/
-
 
 /*************** 이벤트 등록 *****************/
 $(window).scroll(onScroll).trigger('scroll')
@@ -50,7 +49,8 @@ $('.header-wrapper .link-lang .lang').click(onChangeLang)
 function onScroll(e) {
 	var scTop = $(this).scrollTop()
   scrollNotice(scTop)
-  scrolHeader(scTop)
+  scrollHeader(scTop)
+  // scrollNavi(scTop)
 }
    
 function onShowNotice() {
