@@ -19,40 +19,28 @@ function scrollNotice(scTop) {
 	var $navi = $('.navi-wrapper')
 	var $header = $('.header-wrapper')
 	var noticeHeight , linkHeight , naviHeight,headerHeight
-	 //notice-wrapper의 바깥높이는  noticeHeight	
-	if (scTop == 0) {
-		$notice.show()//notice-wrapper는 보이고
-		$link.show()//'.link-wrappert도 보인다.
-		$header.css('top', 'unset')
+
+	if (scTop == 0) {//window 스크롤의 위치가 0일 때
+		$notice.show()
+		$link.show()// notice-wrapper, link-wrappert는 보인다.
+		$header.css('top', 'unset')//header-wrapper의 top은 초기값을 가진다.
+		$header.removeClass('active')//header-wrapper의 active 제거(흰바탕에 검은글씨 나타나지 않음)
 	}
-	else if ( scTop < 150 ) { //스크롤이 내려가면
-		$notice.hide() //notice-wrapper는 숨겨지고
-		$link.hide()	//.link-wrapper도 숨겨진다
-		
+	else if ( scTop < 150 ) { //150보다 위로 스크롤이 내려가면
+		$notice.hide() 
+		$link.hide()//notice-wrapper와 link-wrapper는 숨겨진다
+		$header.removeClass('active')//header-wrapper의 active 제거(흰바탕에 검은글씨 나타나지 않음)
 	}
-	else {
+	else {//150보다 밑으로 내려가면
 		$notice.hide()
-		$link.hide()
+		$link.hide() ///notice-wrapper와 link-wrapper는 숨겨진다
 		headerHeight = $header.outerHeight()
-		$header.css({ 'top':-headerHeight + 'px'})
-
+		$header.css({ 'top': -headerHeight + 'px'})//header-wrapper의 위치는 header-wrappe의 높이만큼 위로 달려 올라가 바짝 붙는다
+		$header.css('top')//header-wrapper css transition과 연결됨
+		$header.css({ 'top': 0 })
+		$header.addClass('active')//header-wrapper의 active 할당(흰바탕에 검은글씨 나타난다)
 	}
 }
-
-function scrollHeader(scTop) {
-   	var linkHeight = $('.link-wrapper').outerHeight()
-		var headerHeight = $('.header-wrapper').outerHeight()
-	
-	if (headerHeight < scTop) {//window의 scroll 위치가 header-wrapper의 높이값밑으로 내려가면
-
-		$('.header-wrapper').stop().animate({ 'top': 0 }, 200, function(){$('.header-wrapper').css({ 'position': 'fixed', 'top':0}) })//header-wrapper의 position은 높이 0에 고정된다.
-	}
-	else {//100미만으로 내려가면
-		$('.header-wrapper').css({ 'position': 'absolute', 'top': 'unset' })//position은 부모인 body에 고정되고 top은 초깃값을 유지한다(부모로부터 상속값이 없으면 초깃값유지)
-}
-}
-
-
 
 
 
@@ -71,24 +59,16 @@ $('.header-wrapper .link-lang .lang').click(onChgLang)
 
 
 /*************** 이벤트 콜백 *****************/
-<<<<<<< HEAD
-function onScroll(e) {
-	var scTop = $(this).scrollTop()
-	scrollNotice(scTop)
-}
-
-=======
 function onScroll(e)
 {
 	var scTop = $(this).scrollTop() //여기서 this는 window, window의 scroll 위치는 변수 scTop
   scrollNotice(scTop)
-	scrollHeader(scTop)
+
 
 }
 
 
 
->>>>>>> spare
 function onShowNotice() {
 	$('.notice-wrapper').find('.bt-show').hide()
 	$('.notice-wrapper').find('.bt-hide').show()
