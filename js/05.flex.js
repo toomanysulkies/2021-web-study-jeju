@@ -1,5 +1,5 @@
 /*************** 글로벌 설정 *****************/
-// var interval = setInterval(onShuffle, 4000)
+var interval = setInterval(onShuffle, 4000)
 var justifyContent = ['space-between', 'space-around', 'space-evenly', 'flex-start', 'flex-end', 'center']
 
 
