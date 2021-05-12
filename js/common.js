@@ -21,7 +21,7 @@ function scrollNotice(scTop) {
 	var noticeHeight , linkHeight , naviHeight,headerHeight
 
 	if (scTop == 0) {//window 스크롤의 위치가 0일 때
-		$notice.show()
+		if($.cookie('hideNotice') !== 'Y')$notice.show()
 		$link.show()// notice-wrapper, link-wrappert는 보인다.
 		$header.css('top', 'unset')//header-wrapper의 top은 초기값을 가진다.
 		$header.removeClass('active')//header-wrapper의 active 제거(흰바탕에 검은글씨 나타나지 않음)
