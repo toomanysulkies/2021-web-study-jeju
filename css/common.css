@@ -196,7 +196,6 @@ body {
     display: block;
     position: absolute;
     top: 0;
-    left: 50px;
     transform: rotate(90deg);
 }
 .header-wrapper .sub-wrap h3.title {
@@ -249,8 +248,28 @@ body {
     margin-bottom: 1em;
 }
 .header-wrapper .navi > .sub-wrapper.stay {
-    width: 600px;
+    width: 540px;
     left: -50px;
+    display: none;
+}
+.header-wrapper .navi > .sub-wrapper.stay::before {
+    left: 50px;
+}
+.header-wrapper .navi > .sub-wrapper.wine {
+    width: 1100px;
+    left: -220px;
+    display: none;
+}
+.header-wrapper .navi > .sub-wrapper.wine::before {
+    left: 258px;
+}
+.header-wrapper .navi > .sub-wrapper.things {
+    width: 600px;
+    right: -210px;
+    display: none;
+}
+.header-wrapper .navi > .sub-wrapper.things::before {
+    left: 315px;
 }
 .header-wrapper:hover,
 .header-wrapper.active {
