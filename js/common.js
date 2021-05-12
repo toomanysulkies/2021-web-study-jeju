@@ -46,6 +46,8 @@ function scrollNotice(scTop) {
 
 /*************** 이벤트 등록 *****************/
 $(window).scroll(onScroll).trigger('scroll')
+$('.header-wrapper .navi').mouseenter(onNaviEnter)
+$('.header-wrapper .navi').mouseleave(onNaviLeave)
 
 $('.notice-wrapper .bt-show').click(onShowNotice)
 $('.notice-wrapper .bt-hide').click(onHideNotice)
@@ -57,8 +59,19 @@ $('.header-wrapper .link-lang').mouseenter(onShowLang)
 $('.header-wrapper .link-lang').mouseleave(onHideLang)
 $('.header-wrapper .link-lang .lang').click(onChgLang)
 
-
 /*************** 이벤트 콜백 *****************/
+
+function onNaviEnter() {
+	$('.header-wrapper .sub-wrapper').hide()
+	$(this).find('.sub-wrapper').show()
+	$('.header-wrapper .navi').removeClass('active')
+	$(this).addClass('active')
+}
+function onNaviLeave() {
+	$('.header-wrapper .sub-wrapper').hide()
+	$('.header-wrapper .navi').removeClass('active')
+}
+
 function onScroll(e)
 {
 	var scTop = $(this).scrollTop() //여기서 this는 window, window의 scroll 위치는 변수 scTop
