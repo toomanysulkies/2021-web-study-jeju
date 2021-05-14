@@ -6,13 +6,38 @@
 
 */
 /*************** 글로벌 설정 *****************/
-
+var $mainWrapper = $('.main-wrapper')  //main-wrapper의 변수 정의
+var $mainSlide = $('.main-wrapper .slide') //man-wrapper 속 슬라이드(사진과 동영상)
+var mainLen = $mainSlide.length //mainSlide의 배열의 길이
+var mainLastIdx = mainLen - 1 //mainSlide들의 인덱스는 length-1
+var mainDepth = 2
+var mainIdx = 0
+var mainInterval
+var mainGap = 3000
+var mainSpeed = 500
+initMain()
 
 /*************** 사용자 함수 *****************/
+function initMain() {
+	$mainSlide.eq(mainIdx).css('z-index', mainDepth++) //후위연산자는 변수를 먼저 할당하고 계산한다. 즉 mainDepth의 값에 1을 증가시킴
+	mainInterval - setInterval(onMainAni,mainGap)
 
+}
 
 /*************** 이벤트 등록 *****************/
 
 
 /*************** 이벤트 콜백 *****************/
+/*
+onMainAni가 실행되면
+조건문을 거친다 
+- mainSlide가 마지막 배열의 인덱스라면 인덱스는 0,
+- 아니라면 인덱스는 1씩 증가한다.
 
+조건문을 거친 인덱스 값에 해당하는 mainSlide의 css의 z-index가 하나씩 증가한다(상위의 레이어로 올라옴)
+----> 즉, 다음 사진이 window의 main-wrapper에 보인다!
+*/
+function onMainAni() {
+	mainIdx = (mainIdx == mainLastIdx) ? 0 : mainIdx + 1
+$mainSlide.eq(mainIdx).css('z-index', mainDepth++)
+}
