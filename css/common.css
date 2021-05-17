@@ -30,6 +30,10 @@ body {
     background-color: #b38859;
     color: #fff !important;
 }
+.bt-ghost.angle::after {
+    content: ">";
+    display: inline-block;
+}
 .bt-anchor {
     text-decoration: underline;
 }
