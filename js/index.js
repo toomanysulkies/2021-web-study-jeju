@@ -1,49 +1,55 @@
-/*main-wrapper에서 할 일
-1. 배너가 움직인다.
-2. 배너가 나타나면 그 후에 내부요소들이 animate
-3. 동영상은 플레이가 끝난 이후에 다음으로 넘어간다.
+// main-wrapper에서 할일
+// 1. 배너가 자동으로 움직인다
+// 2. 배너가 나타나면 그 후에 내부요소들이 animation으로 나타난다
+// 3. 동영상은 플레이가 끝난 이후에 다음으로 넘어간다
 
+	/* if(idx == lastIdx) mainIdx = 0
+	else idx = idx + 1 */
 
 /*************** main-wrapper *****************/
 $(function() {
 
-
-/*************** 글로벌 설정 *****************/
-var $wrapper = $('.main-wrapper')  //main-wrapper의 변수 정의
-var $slide = $('.main-wrapper .slide') //man-wrapper 속 슬라이드(사진과 동영상)
-var len = $slide.length //mainSlide의 배열의 길이
-var lastIdx = len - 1 //mainSlide들의 인덱스는 length-1
-var depth = 2
-var idx = 0
-var interval
-var gap = 3000
-var speed = 500
-init()
-
-/*************** 사용자 함수 *****************/
-
+	/*************** 글로벌 설정 *****************/
+	var $wrapper = $('.main-wrapper')
+	var $slide = $('.main-wrapper .slide')
+	var video = $('.main-wrapper .video')[0]
+	var len = $slide.length
+	var lastIdx = len - 1
+	var depth = 2
+	var idx = 0
+	var gap = 3000
+	var speed = 500
+	init()
 	
-		function init() {
-		$slide.eq(idx).css('z-index', depth++)//후위연산자는 변수를 먼저 할당하고 계산한다. 즉 mainDepth의 값에 1을 증가시킴
-		interval = setInterval(onAni, gap)
+	
+	/*************** 사용자 함수 *****************/
+	function init() {
+		$slide.eq(idx).css('z-index', depth++)//현재 인덱스인 slide의 css에서 z-index가 증가한다.
+		onAni() //실행
 	}
 
-/*************** 이벤트 등록 *****************/
 
+	/*************** 이벤트 등록 *****************/
+	video.addEventListener('loadeddata', onLoadedVideo)
+	video.addEventListener('ended', onPlay)
 
-/*************** 이벤트 콜백 *****************/
-/*
-onMainAni가 실행되면
-조건문을 거친다 
-- mainSlide가 마지막 배열의 인덱스라면 인덱스는 0,
-- 아니라면 인덱스는 1씩 증가한다.
+	/*************** 이벤트 콜백 *****************/
+	function onLoadedVideo() {
+		if(video.readyState >= 2) {
+			video.playbackRate = 4.0
+		}
+	}
+	
+	function onAni() {
+		video.currentTime = 0
+		if($slide.eq(idx).hasClass('is-video')) video.play()
+		else setTimeout(onPlay, gap)
+	}
 
-조건문을 거친 인덱스 값에 해당하는 mainSlide의 css의 z-index가 하나씩 증가한다(상위의 레이어로 올라옴)
-----> 즉, 다음 사진이 window의 main-wrapper에 보인다!
-*/
-function onAni() {
+	function onPlay() {
 		idx = (idx == lastIdx) ? 0 : idx + 1
-		$slide.eq(idx).css('z-index', depth++)
+		$slide.eq(idx).css({'z-index': depth++, 'left': '100%'})
+		$slide.eq(idx).stop().animate({'left': 0}, speed, onAni)
 	}
 
 })
