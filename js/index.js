@@ -21,11 +21,12 @@ var speed = 500
 init()
 
 /*************** 사용자 함수 *****************/
-function init() {
-	$slide.eq(idx).css('z-index', depth++) //후위연산자는 변수를 먼저 할당하고 계산한다. 즉 mainDepth의 값에 1을 증가시킴
-	interval - setInterval(onAni,gap)
 
-}
+	
+		function init() {
+		$slide.eq(idx).css('z-index', depth++)//후위연산자는 변수를 먼저 할당하고 계산한다. 즉 mainDepth의 값에 1을 증가시킴
+		interval = setInterval(onAni, gap)
+	}
 
 /*************** 이벤트 등록 *****************/
 
@@ -41,7 +42,8 @@ onMainAni가 실행되면
 ----> 즉, 다음 사진이 window의 main-wrapper에 보인다!
 */
 function onAni() {
-	idx = (idx == lastIdx) ? 0 : idx + 1
-$slide.eq(idx).css('z-index', depth++)
+		idx = (idx == lastIdx) ? 0 : idx + 1
+		$slide.eq(idx).css('z-index', depth++)
 	}
+
 })
