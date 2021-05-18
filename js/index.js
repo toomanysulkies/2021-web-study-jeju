@@ -33,8 +33,18 @@ $(function() {
 	/*************** 이벤트 등록 *****************/
 	video.addEventListener('loadeddata', onLoadedVideo)
 	video.addEventListener('ended', onPlay)
-
+	$('.bt-video').click(onModalVideo)
+	$('.modal-video').find('.bt-close').click(onModalVideoClose)
 	/*************** 이벤트 콜백 *****************/
+	function onModalVideo() {
+	$('.modal-video').show()
+}
+	function onModalVideoClose() {
+	$('.modal-video').hide()
+}
+
+
+
 	function onLoadedVideo() {
 		if(video.readyState >= 2) {
 			video.playbackRate = 4.0

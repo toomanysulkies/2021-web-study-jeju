@@ -33,11 +33,33 @@ body {
 .bt-ghost.angle::after {
     content: ">";
     display: inline-block;
+    margin-left: 0.5em;
+    margin-right: -0.5em;
 }
 .bt-anchor {
     text-decoration: underline;
 }
 
+.modal-wrapper {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+    display: none;
+    z-index: 100;
+}
+.modal-wrapper > .modal-stage {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.modal-wrapper .bt-close {
+    cursor: pointer;
+}
 /********************** notice-wrapper *********************/
 .notice-wrapper {
     width: 100%;

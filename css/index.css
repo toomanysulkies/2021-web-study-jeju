@@ -87,6 +87,23 @@
 
 /**********************cookie-wrapper  *********************/
 
+/**********************modal-wrapper  *********************/
+.modal-video .modal-wrap {
+    flex: 80% 0 1;
+}
+.modal-video .modal-top {
+    padding: 0.5em 0;
+    font-size: 2em;
+    color: #ddd;
+    text-align: right;
+}
+.modal-video .modal-center video {
+    width: 100%;
+}
+.modal-video .modal-bottom {
+    padding: 2em 0;
+    text-align: center;
+}
 /********************** 반응형 설정 *********************/
 @media (max-width: 1399px) {
 }
