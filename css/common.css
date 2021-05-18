@@ -75,7 +75,7 @@ body {
     cursor: pointer;
     display: inline-block;
     transition: all 0.5s;
-    transform: scale(0.5);
+    transform: scale(0.6);
 }
 .pager-wrapper .pager.active {
     border: 1px solid#fff;

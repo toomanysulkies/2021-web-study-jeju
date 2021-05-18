@@ -215,10 +215,7 @@
 ### 설명:
 ### on: ƒ (e,t,n,r)
 ### 설명: 이벤트를 등록한다.
-```$('.jq').on('click', function() { 
-	 	// 할일
-		 	 })``
-		 ```
+``$('.jq').on('click', function() { // 할일})``
 ### one: ƒ (e,t,n,r)
 ### 설명:
 ### outerHeight: ƒ (e,t)
