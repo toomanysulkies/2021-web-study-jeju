@@ -7,7 +7,7 @@
 	else idx = idx + 1 */
 
 /*************** main-wrapper *****************/
-
+$(function () {
 	/*************** 글로벌 설정 *****************/
 	var $wrapper = $('.main-wrapper')
 	var $slide = $('.main-wrapper .slide')
@@ -17,7 +17,7 @@
 	var lastIdx = len - 1
 	var depth = 2
 	var idx = 0
-	var gap = 3000
+	var gap = 5000
 	var speed = 500
 	init()
 	
@@ -28,11 +28,12 @@
 		$slide.eq(idx).addClass('active')
 		/*현재 인덱스인 slide에 클래스 active를 추가한다.
 		css:{transform: translateY(0);
-    transition-delay: 0;}
+		transition-delay: 0;}
 		\*/
-     
+ 
 
-		for(var i=0; i<len; i++) $pagerSlide.append('<i class="pager"></i>')//pagerSlide(=pager-slide, pager들이 있는 wrapper) 다음에 pager를 추가
+		for(var i=0; i<len; i++) $pagerSlide.append('<i class="pager"></i>')
+		//pagerSlide(=pager-slide, pager들이 있는 wrapper) 다음에 pager를 추가
 		$pagerSlide.find('.pager').click(onPagerClick)//pager-slide 안의 pager를 누르면 onPagerClick 실행
 		$pagerSlide.find('.pager').eq(idx).addClass('active')//pager 중에서  전달받은 인덱스에 해당하는 pager에 클래스 active를 추가한다.
 
@@ -52,42 +53,43 @@
 	$('.cookie-wrapper').find('.bt-close').click(onCookieClose)
 
 	/*************** 이벤트 콜백 *****************/
+
 	function onPagerClick() {
 		idx = $(this).index()
 		$pagerSlide.find('.pager').removeClass('active')
 		$(this).addClass('active')
-
 		onPlay('pager')
 	}
+
 	function onCookieClose() {
 		$('.cookie-wrapper').hide()
-}
+	}
 
 	function onModalVideo() {
-	$('.modal-video').show()
-}
+		$('.modal-video').show()
+	}
 	function onModalVideoClose() {
-	$('.modal-video').hide()
-}
+		$('.modal-video').hide()
+	}
 
 	function onLoadedVideo() {
-		if(video.readyState >= 2) {
+		if (video.readyState >= 2) {
 			video.playbackRate = 4.0
 		}
 	}
 	
 	function ani() {
-		$(this).addClass('active')
+	$(this).addClass('active')
 		video.currentTime = 0
 		if($slide.eq(idx).hasClass('is-video')) video.play()
 		else setTimeout(onPlay, gap)
 	}
 
 	function onPlay(state) {
-		if(state !== 'pager')idx = (idx == lastIdx) ? 0 : idx + 1
-		$slide.eq(idx).css({ 'z-index': depth++, 'left': '100%' })
+			if(state !== 'pager') idx = (idx == lastIdx) ? 0 : idx + 1
+		$slide.eq(idx).css({'z-index': depth++, 'left': '100%'})
 		$slide.removeClass('active')
+
 		$slide.eq(idx).stop().animate({'left': 0}, speed, ani)
 	}
-
-
+})
