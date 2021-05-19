@@ -7,7 +7,6 @@
 	else idx = idx + 1 */
 
 /*************** main-wrapper *****************/
-$(function() {
 
 	/*************** 글로벌 설정 *****************/
 	var $wrapper = $('.main-wrapper')
@@ -64,15 +63,12 @@ $(function() {
 		$('.cookie-wrapper').hide()
 }
 
-
 	function onModalVideo() {
 	$('.modal-video').show()
 }
 	function onModalVideoClose() {
 	$('.modal-video').hide()
 }
-
-
 
 	function onLoadedVideo() {
 		if(video.readyState >= 2) {
@@ -87,11 +83,11 @@ $(function() {
 		else setTimeout(onPlay, gap)
 	}
 
-	function onPlay() {
-		idx = (idx == lastIdx) ? 0 : idx + 1
+	function onPlay(state) {
+		if(state !== 'pager')idx = (idx == lastIdx) ? 0 : idx + 1
 		$slide.eq(idx).css({ 'z-index': depth++, 'left': '100%' })
 		$slide.removeClass('active')
 		$slide.eq(idx).stop().animate({'left': 0}, speed, ani)
 	}
 
-})
+
