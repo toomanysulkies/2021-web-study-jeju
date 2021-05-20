@@ -42,7 +42,7 @@
 
 .main-wrapper .pager-slide {
     position: absolute;
-    z-index: 2;
+    z-index: 198;
     bottom: 30%;
     left: 50%;
     transform: translateX(-50%);
