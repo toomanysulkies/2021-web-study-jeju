@@ -83,6 +83,10 @@
       font-size: 3em;
       margin-left: .25em;
     }
+  .main-wrapper .info > h3{
+      padding: 1em 0;
+      text-align: center;
+  }
 
      /* .main-wrapper .info-wrap{
          padding: 1.5em 0; 
