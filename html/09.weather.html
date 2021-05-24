@@ -1,4 +1,7 @@
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script src="../js/axios.min.js"></script>
 <script>
+
      // Callback 설명
      function saleLatte(price, type) {
           //음료제작
@@ -55,9 +58,17 @@
 
 
 
+     var url = 'https://api.openweathermap.org/data/2.5/weather?lat=37.566535&lon=126.97796919&units=metric&appid=02efdd64bdc14b279bc91d9247db4722'
+     var path = 'https://api.openweathermap.org/data/2.5/weather'
+     var data = {
+          lat: 37.566535,
+          lon: 126.97796919,
+          units: 'metric',
+          appid: '02efdd64bdc14b279bc91d9247db4722'
+     }
 
      /*4.외부와의 연결(통신) AJAX*********************************/
-     var url = 'https://api.openweathermap.org/data/2.5/weather?lat=37.57772925722713&lon=126.92785498057282&units=metric&appid=d448bd0f037cc68b858d9cc0c8556118'
+     
 
      var xhr = new XMLHttpRequest()
      var weather
@@ -71,7 +82,22 @@
      xhr.send();
 
 
+    
 
+     /*********** 4. 외부와의 연결(통신) - AJAX - jQuery *************/
+     $.get(path, data, onGetData)
+     function onGetData(r) {
+          console.log(r)
+     }
+
+     /*********** 4. 외부와의 연결(통신) - AJAX -Axios *************/
+     axios.get(url,data).then(onGetAxios).catch(onError)
+     function onGetAxios(r) {
+          console.log(r);
+     }
+     function onError(err) {
+          console.log(err);
+     }
 
      /*
      readyState Holds the status of the XMLHttpRequest.
