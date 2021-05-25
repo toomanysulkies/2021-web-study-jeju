@@ -14,6 +14,7 @@ $(function() {
 	var $slide = $('.main-wrapper .slide')
 	var $pagerSlide = $('.main-wrapper .pager-slide')
 	var video = $('.main-wrapper .video')[0]
+	var $weather = $('.main-wrapper .weather')
 	var len = $slide.length
 	var lastIdx = len - 1
 	var depth = 2
@@ -21,11 +22,41 @@ $(function() {
 	var gap = 5000
 	var speed = 500
 	var timeout
-	init()
+	var weatherUrl ='https://api.openweathermap.org/data/2.5/weather'
+	var weatherData = {
+		    units: 'metric',
+       appid: 'd448bd0f037cc68b858d9cc0c8556118'
+	}
+
+	var weatherIcon = {
+		i01d: 'bi-brightness-high',
+		i01n: 'bi-brightness-high-fill',
+		i02d: 'bi-cloud-sun',
+		i02n: 'bi-cloud-sun-fill',
+		i03d: 'bi-cloud',
+		i03n: 'bi-cloud-fill',
+		i04d: 'bi-clouds',
+		i04n: 'bi-cloud-fills',
+		i09d: 'bi-cloud-rain-heavy',
+		i09n: 'bi-cloud-rain-heavy-fill',
+		i10d: 'bi-cloud-drizzle',
+		i10n: 'bi-cloud-drizzle-fill',
+		i11d: 'bi-cloud-lightning',
+		i11n: 'bi-cloud-lightning-fill',
+		i13d: 'bi-cloud-snow',
+		i13n: 'bi-cloud-snow-fill',
+		i50d: 'bi-cloud-haze',
+		i50n: 'bi-cloud-haze-fill'
 	
+	}
+	init()
+	weather()
+
+
 	
 	/*************** 사용자 함수 *****************/
 	function init() {
+
 		$slide.eq(idx).css('z-index', depth++)
 		$slide.eq(idx).addClass('active')
 
@@ -38,7 +69,10 @@ $(function() {
 		} */
 		ani()
 	}
-
+	function weather() {
+	 //위치정보 가져오기(33.48549763753199, 126.481537648898)
+		navigator.geolocation.getCurrentPosition(onGetGeo, onErrorGeo)
+ }
 
 	/*************** 이벤트 등록 *****************/
 	video.addEventListener('loadeddata', onLoadedVideo)
@@ -50,6 +84,23 @@ $(function() {
 
 
 	/*************** 이벤트 콜백 *****************/
+	function onGetWeather(r) {
+		console.log(r);
+		$weather.find('.icon').addClass(weatherIcon['i'+r.weather[0].icon])
+		$weather.find('.temp').text(r.main.temp)
+	}
+
+	function onGetGeo(r) {
+		weatherData.lat=r.coords.latitude
+		weatherData.lon=r.coords.longitude
+		$.get(weatherUrl,weatherData,onGetWeather)
+}
+	function onErrorGeo() {
+	weatherData.lat=33.48549763753199
+		weatherData.lon=126.481537648898
+		$.get(weatherUrl,weatherData,onGetWeather)
+}
+
 	function onPagerClick() {
 		idx = $(this).index()
 		onPlay('pager')
