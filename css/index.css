@@ -14,6 +14,7 @@ body > section {
 .main-wrapper {
     width: 100%;
     height: 100vh;
+    overflow: hidden;
 }
 .main-wrapper .slide-stage {
     width: 100%;
@@ -119,7 +120,10 @@ body > section {
     padding: 0 4em;
     color: rgba(255, 255, 255, 0.5);
     cursor: pointer;
+    animation: infoAni 0.35s forwards;
+    transform: translateY(200%);
 }
+
 .main-wrapper .info:nth-child(1),
 .main-wrapper .info:nth-child(2) {
     border-right: 1px solid rgba(255, 255, 255, 0.25);
@@ -143,7 +147,9 @@ body > section {
     color: #fff;
     padding: 1.5em;
     text-align: center;
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.18);
+    animation: infoAni 0.35s forwards;
+    transform: translateY(200%);
 }
 
 .main-wrapper .info-stage .weather .icon {
@@ -166,6 +172,27 @@ body > section {
 }
 .main-wrapper .info-stage .weather .time small {
     font-size: 1em;
+}
+
+.main-wrapper .info-stage .info:nth-child(1) {
+    animation-delay: 2s;
+}
+.main-wrapper .info-stage .info:nth-child(2) {
+    animation-delay: 2.15s;
+}
+.main-wrapper .info-stage .info:nth-child(3) {
+    animation-delay: 2.3s;
+}
+.main-wrapper .info-stage .weather:nth-child(4) {
+    animation-delay: 2.5s;
+}
+@keyframes infoAni {
+    0% {
+        transform: translateY(200%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
 }
 /**********************dream-wrapper  *********************/
 
