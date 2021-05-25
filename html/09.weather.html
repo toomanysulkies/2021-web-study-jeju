@@ -108,7 +108,7 @@
         var week = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일']
         var d = new Date()
         console.log(d.__proto__)
-/*
+
         console.log(d.getFullYear())
         console.log(months[d.getMonth()])		// 0 ~ 11
         console.log(d.getDate())
@@ -117,14 +117,23 @@
         console.log(d.getMinutes())
         console.log(d.getSeconds())
         console.log(new Date(1619420038000))
+
         
-      바닐라 자바스크립트 대신 모멘트를 활용한다!
- */
+//       바닐라 자바스크립트 대신 모멘트를 활용한다!
+
 //moment
 console.log(moment().format('YYYY.M.D.ddd'));
 console.log(moment().format('LT'));
 
- 
+ //timestamp를 알아보자
+ //timestamp는 1970-01-01- 00:00:00 ->(JAVA)
+ //timestamp는 1970-01-01- 00:00:00:000 ->(JavaScript)
+ //1조 6천 ->밀리초   1621927968276
+ //16억 ->초                  1621927801
+        
+
+ console.log(new Date().getTime())
+ console.log(moment(1621927801*1000).format('YYYY.M.D.ddd'))
 
         
 
