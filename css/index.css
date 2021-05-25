@@ -6,10 +6,27 @@
 body > section {
     position: relative;
     z-index: 3;
-    min-height: 100vh;
-    background-color: aqua;
+    background-color: #fff;
+    padding: 5em 0;
 }
-
+.title-wrap {
+    text-align: center;
+}
+.title-wrap h2.title {
+    font-size: 3.5em;
+    padding: 0.25em 0;
+    font-family: "Jost", sans-serif;
+    letter-spacing: 0.05em;
+}
+.title-wrap h3.title {
+    font-size: 2em;
+    padding: 0.175em 0;
+}
+.title-wrap h4.title {
+    font-size: 1.125em;
+    padding: 0.125em 0;
+    color: #888;
+}
 /**********************main-wrapper  *********************/
 .main-wrapper {
     width: 100%;
