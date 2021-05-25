@@ -3,12 +3,24 @@
 /* font-family: "Noto Sans KR", sans-serif; */
 /* font-family: 'Jost', sans-serif; */
 
+body > section {
+    position: relative;
+    z-index: 3;
+    min-height: 100vh;
+    background-color: aqua;
+}
+
 /**********************main-wrapper  *********************/
+.main-wrapper {
+    width: 100%;
+    height: 100vh;
+}
 .main-wrapper .slide-stage {
     width: 100%;
     height: 100vh;
     overflow: hidden;
-    position: relative;
+    position: fixed;
+    z-index: 1;
 }
 .main-wrapper .slide-wrap {
     position: relative;
@@ -89,9 +101,9 @@
 }
 
 .main-wrapper .info-stage {
-    position: absolute;
+    position: fixed;
     width: 100%;
-    z-index: 3;
+    z-index: 2;
     left: 0;
     bottom: 0;
     display: flex;
