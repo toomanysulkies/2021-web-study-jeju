@@ -67,7 +67,7 @@
           appid: '02efdd64bdc14b279bc91d9247db4722'
      }
 
-     /*4.외부와의 연결(통신) AJAX*********************************/
+     /*4.외부와의 연결(통신) AJAX-XMLHttpRequest*********************************/
      
 
      var xhr = new XMLHttpRequest()
@@ -91,13 +91,20 @@
      }
 
      /*********** 4. 외부와의 연결(통신) - AJAX -Axios *************/
-     axios.get(url,data).then(onGetAxios).catch(onError)
+   axios.get(path, { params: data }).then(onGetAxios).catch(onError)
      function onGetAxios(r) {
-          console.log(r);
+          console.log(r.data)
      }
      function onError(err) {
-          console.log(err);
+          console.log(err)
      }
+
+
+
+       /*********** 5. 시간- Date 객체 *************/
+       //new를 알아보자-> 10.Object 참조
+       console.log(new Date())
+
 
      /*
      readyState Holds the status of the XMLHttpRequest.
