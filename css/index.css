@@ -259,7 +259,13 @@ body > section {
     border-radius: 13px;
     top: -13px;
     left: 10%;
-
+}
+.dream-wrapper .pager-slide {
+    text-align: center;
+}
+.dream-wrapper .pager-slide .swiper-pagination-bullet-active {
+    border: 1px solid #b38859;
+}
 /**********************promo-wrapper  *********************/
 
 /**********************room-wrapper  *********************/

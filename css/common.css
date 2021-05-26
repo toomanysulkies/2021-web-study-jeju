@@ -71,7 +71,8 @@ body {
 .bt-moving-top:hover > i {
     transform: translateY(-0.2em);
 }
-.pager-wrapper .pager {
+.pager-wrapper .pager,
+.pager-wrapper .swiper-pagination-bullet {
     border: 1px solid #fff;
     border-radius: 50%;
     background-color: #ccc;
@@ -82,11 +83,14 @@ body {
     display: inline-block;
     transition: all 0.5s;
     transform: scale(0.6);
+    opacity: 1;
 }
-.pager-wrapper .pager.active {
+.pager-wrapper .pager.active,
+.pager-wrapper .swiper-pagination-bullet-active {
     border: 1px solid #fff;
     background-color: transparent;
     transform: scale(1);
+    opacity: 1;
 }
 .bt-slide {
     background-color: #ddd;
