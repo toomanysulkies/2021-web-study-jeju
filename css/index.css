@@ -26,7 +26,7 @@ body > section {
 .title-wrap h4.title {
     font-size: 1.125em;
     padding: 0.125em 0;
-    color: #888;
+    color: #777;
     margin-bottom: 0.125em;
 }
 /**********************main-wrapper  *********************/
@@ -214,12 +214,17 @@ body > section {
     }
 }
 /**********************dream-wrapper  *********************/
-
+.dream-wrapper {
+    background-image: linear-gradient(#fff, #fff 40%, #eee 40%, #eee);
+    overflow: hidden;
+}
 .dream-wrapper .slide-stage {
     position: relative;
+    margin-bottom: 6em;
 }
 .dream-wrapper .slide-stage > .swiper-container {
     width: calc(100% - 60px);
+    overflow: visible;
 }
 .dream-wrapper .slide-stage .slide {
     cursor: pointer;
@@ -262,9 +267,32 @@ body > section {
 }
 .dream-wrapper .pager-slide {
     text-align: center;
+    margin-top: 2em;
+    position: absolute;
+    width: 100%;
 }
 .dream-wrapper .pager-slide .swiper-pagination-bullet-active {
     border: 1px solid #b38859;
+}
+.dream-wrapper .slide-stage .box {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.7);
+    position: absolute;
+    top: 0;
+    z-index: 15;
+}
+.dream-wrapper .slide-stage .box.left {
+    left: calc(-100% - 10px);
+}
+.dream-wrapper .slide-stage .box.right {
+    right: calc(-100% - 10px);
+}
+.dream-wrapper .bt-wrap {
+    text-align: center;
+}
+.dream-wrapper .bt-wrap .bt-ghost.white {
+    padding: 1em 3em;
 }
 /**********************promo-wrapper  *********************/
 

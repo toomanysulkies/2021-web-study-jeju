@@ -23,6 +23,14 @@ body {
     background-color: #fff;
     color: #b38859;
 }
+.bt-ghost.white {
+    border: 1px solid#ddd;
+    color: #999;
+}
+.bt-ghost.white:hover {
+    background-color: #b38859;
+    color: #fff !important;
+}
 .bt-ghost.gold {
     border: 1px solid #fff;
 }
@@ -94,7 +102,7 @@ body {
 }
 .bt-slide {
     background-color: #ddd;
-    color: #444;
+    color: #777;
     width: 60px;
     height: 60px;
     position: absolute;
