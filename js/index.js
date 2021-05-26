@@ -75,11 +75,11 @@ $(function () {
 
     function slideDream() {
         var swiper = new Swiper(".dream-wrapper .swiper-container", {
-            slidesPerView: 1,
-            spaceBetween: 10,
             pagination: {
                 el: ".dream-wrapper .swiper-pagination",
             },
+            slidesPerView: 1,
+            spaceBetween: 10,
             breakpoints: {
                 576: {
                     slidesPerView: 2,
