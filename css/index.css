@@ -234,6 +234,7 @@ body > section {
     padding: 8%;
     min-height: 220px;
     background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.17);
 }
 .dream-wrapper .slide-stage .img-wrap {
     overflow: hidden;
