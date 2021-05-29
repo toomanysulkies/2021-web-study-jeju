@@ -7,93 +7,157 @@
 else idx = idx + 1 */
 
 /* for(var i=0; i<len; i++) {
-	$('<i class="pager"></i>').appendTo($pagerSlide).click(onPagerClick).addClass((idx === i) ? 'active': '')
+	$('<i class='pager'></i>').appendTo($pagerSlide).click(onPagerClick).addClass((idx === i) ? 'active': '')
 } */
 
 /*************** Index *****************/
 $(function () {
+    
     init();
+
+    function getSwipeOption(cls, opt) {
+    /*
+		- cls : '.promo-wrapper
+		- opt 
+		{
+			pager: true,
+			navi: true,
+			auto: true,
+			delay: 3000,
+			loop: true,
+			space: 40,
+			break: 4
+		}
+		*/
+		var pagination = (opt.pager === false) ? false : {
+			el: cls + ' .pager-wrapper',
+			clickable: true
+		}
+
+		var navigation = (opt.navi === false) ? false : {
+			nextEl: cls + ' .bt-slide.right',
+			prevEl: cls + ' .bt-slide.left',
+		}
+
+		var autoplay = (opt.auto === false) ? false : {
+			// delay: opt.delay ? opt.delay : 3000
+			delay: opt.delay || 3000
+		}
+
+		var breakpoints = {}
+    return{
+        pagination: {
+            el: '.dream-wrapper .pager-wrapper',
+                clickable: true,
+            },
+        navigation: {
+            nextEl: '.dream-wrapper .bt-slide.right',
+            prevEl: '.dream-wrapper .bt-slide.left',
+            },
+        autoplay: {
+            delay: 3000,
+            },
+        loop: true,
+            slidesPerView: 1,
+            spaceBetween: 40,
+            breakpoints: {
+            576: {
+                slidesPerView: 2,
+                },
+            992: {
+                slidesPerView: 3,
+                },
+            }
+    }
+    }
 
     function init() {
         weather();
         setCookie();
         slideMain();
         slideDream();
+        slidePromo();
     }
 
     function setCookie() {
-        var $cookieWrapper = $(".cookie-wrapper");
-        var $cookieClose = $cookieWrapper.find(".bt-close");
-        var $cookieConfirm = $cookieWrapper.find(".bt-confirm");
+        //쿠키
+        /*
+        쿠키에는 두 가지의 기능이 필요하다
+        1. 단순하게 쿠키를 닫아주기만 하는 기능-.bt-close
+        2. 쿠키를 하루동안 아예 닫아서 보이지 않게 하는 기능-.bt-confirm
+        */
+        var $cookieWrapper = $('.cookie-wrapper');
+        var $cookieClose = $cookieWrapper.find('.bt-close');
+        var $cookieConfirm = $cookieWrapper.find('.bt-confirm');
 
-        if ($.cookie("hideCookie") === "Y") onCloseCookie();
+        if ($.cookie('hideCookie') === 'Y') onCloseTodayCookie(); //만약 쿠키의 hideCookie 가 Y라면 실행(하루동안 보지 않기)
 
         function onCloseCookie() {
-            $(".cookie-wrapper").hide();
+            $('.cookie-wrapper').hide();
         }
-
         function onCloseTodayCookie() {
-            $.cookie("hideCookie", "Y", {
+            $.cookie('hideCookie', 'Y', {
                 expires: 1,
-                path: "/",
+                path: '/',
             });
             onCloseCookie();
         }
 
-        $cookieClose.click(onCloseCookie);
-        $cookieConfirm.click(onCloseTodayCookie);
+        $cookieClose.click(onCloseCookie); //.bt-close를 누르면 쿠키 닫기 실행
+        $cookieConfirm.click(onCloseTodayCookie); //.bt-confirm를 누르면 하루동안 쿠키 보지 않기
     }
 
     function slideMain() {
-        var $slide = $(".main-wrapper .slide");
-        var $pagerSlide = $(".main-wrapper .pager-slide");
-        var video = $(".main-wrapper .video")[0];
-        var len = $slide.length;
-        var lastIdx = len - 1;
-        var depth = 2;
+        //메인 래퍼의 함수 (비디오)
+        /*
+        메인 래퍼에서 구현해야할 기능
+        1. 비디오 재생
+        2. 영상보기를 누르면 비디오 모달
+        3. 페이저를 누르면 다음 페이지의 비디오 또는 사진이 등장
+        4. 메인 하단의 인포 래퍼에 날씨와 시간 데이터를 불러오기
+        */
+
+        //지역 변수 설정
+        var $slide = $('.main-wrapper .slide');
+        var $pagerSlide = $('.main-wrapper .pager-slide');
+        var video = $('.main-wrapper .video')[0];
+        var len = $slide.length; //전체 배열 수
+        var lastIdx = len - 1; //마지막 인덱스는 늘 전체 배열 빼기 1
+        var depth = 2; //z-index
         var idx = 0;
-        var gap = 5000;
+        var gap = 5000; //메인 래퍼 스와이프의 시간 간격은 5초로 설정
         var speed = 500;
         var timeout;
 
-        function onPagerClick() {
-            idx = $(this).index();
-            onPlay("pager");
+        function ani() {
+            //비디오 플레이 실행 함수 ani
+            $(this).addClass('active'); //지금 객체에 액티브 클래스 실행
+            video.currentTime = 0; //0초부터 시작
+            if ($slide.eq(idx).hasClass('is-video')) video.play();
+            //현재 인덱스의 객체가 클래스is-video를 가지고 있다면 비디오 재생
+            else {
+                //아니라면 타임아웃
+                clearTimeout(timeout);
+                timeout = setTimeout(onPlay, gap);
+            }
         }
-
-        function onModalVideo() {
-            $(".modal-video").show();
-        }
-
-        function onModalVideoClose() {
-            $(".modal-video").hide();
-        }
-
         function onLoadedVideo() {
+            //비디오 속도
             if (video.readyState >= 2) {
                 video.playbackRate = 4.0;
             }
         }
 
-        function ani() {
-            $(this).addClass("active");
-            video.currentTime = 0;
-            if ($slide.eq(idx).hasClass("is-video")) video.play();
-            else {
-                clearTimeout(timeout);
-                timeout = setTimeout(onPlay, gap);
-            }
-        }
-
         function onPlay(e) {
-            if (e !== "pager") idx = idx == lastIdx ? 0 : idx + 1;
-            $pagerSlide.find(".pager").removeClass("active");
-            $pagerSlide.find(".pager").eq(idx).addClass("active");
+            //페이저 클릭 시
+            if (e !== 'pager') idx = idx == lastIdx ? 0 : idx + 1;
+            $pagerSlide.find('.pager').removeClass('active');
+            $pagerSlide.find('.pager').eq(idx).addClass('active');
             $slide.eq(idx).css({
-                "z-index": depth++,
-                left: "100%",
+                'z-index': depth++,
+                left: '100%',
             });
-            $slide.removeClass("active");
+            $slide.removeClass('active');
             $slide.eq(idx).stop().animate(
                 {
                     left: 0,
@@ -102,64 +166,69 @@ $(function () {
                 ani
             );
         }
+        function onModalVideo() {
+            //비디오 모달 열기
+            $('.modal-video').show();
+        }
 
-        $slide.eq(idx).css("z-index", depth++);
-        $slide.eq(idx).addClass("active");
-        for (var i = 0; i < len; i++)
-            $pagerSlide.append('<i class="pager"></i>');
-        $pagerSlide.find(".pager").click(onPagerClick);
-        $pagerSlide.find(".pager").eq(idx).addClass("active");
-        video.addEventListener("loadeddata", onLoadedVideo);
-        video.addEventListener("ended", onPlay);
-        $(".bt-video").click(onModalVideo);
-        $(".modal-video").find(".bt-close").click(onModalVideoClose);
+        function onModalVideoClose() {
+            //비디오 모달 닫기
+            $('.modal-video').hide();
+        }
 
-        ani();
+        function onPagerClick() {
+            idx = $(this).index();
+            onPlay('pager');
+        }
+
+        $slide.eq(idx).css('z-index', depth++);
+        $slide.eq(idx).addClass('active');
+        for (var i = 0; i < len; i++) $pagerSlide.append('<i class="pager"></i>');
+        $pagerSlide.find('.pager').click(onPagerClick);
+        $pagerSlide.find('.pager').eq(idx).addClass('active');
+        video.addEventListener('loadeddata', onLoadedVideo);
+        video.addEventListener('ended', onPlay);
+        $('.bt-video').click(onModalVideo); //비디오 플레이 버튼 누르면 비디오 모달열기
+        $('.modal-video').find('.bt-close').click(onModalVideoClose); //비디오 모달 열린 상태에서 닫기 누르면 비디오 모달 닫기
+
+        ani(); //콜백 함수 실행
     }
 
     function weather() {
-        var $weather = $(".main-wrapper .weather");
-        var weatherURL = "https://api.openweathermap.org/data/2.5/weather";
+        var $weather = $('.main-wrapper .weather');
+        var weatherURL = 'https://api.openweathermap.org/data/2.5/weather';
         var weatherData = {
-            appid: "02efdd64bdc14b279bc91d9247db4722",
-            units: "metric",
+            appid: '02efdd64bdc14b279bc91d9247db4722',
+            units: 'metric',
         };
         var weatherIcon = {
-            i01d: "bi-brightness-high",
-            i01n: "bi-brightness-high-fill",
-            i02d: "bi-cloud-sun",
-            i02n: "bi-cloud-sun-fill",
-            i03d: "bi-cloud",
-            i03n: "bi-cloud-fill",
-            i04d: "bi-clouds",
-            i04n: "bi-cloud-fills",
-            i09d: "bi-cloud-rain-heavy",
-            i09n: "bi-cloud-rain-heavy-fill",
-            i10d: "bi-cloud-drizzle",
-            i10n: "bi-cloud-drizzle-fill",
-            i11d: "bi-cloud-lightning",
-            i11n: "bi-cloud-lightning-fill",
-            i13d: "bi-cloud-snow",
-            i13n: "bi-cloud-snow-fill",
-            i50d: "bi-cloud-haze",
-            i50n: "bi-cloud-haze-fill",
+            i01d: 'bi-brightness-high',
+            i01n: 'bi-brightness-high-fill',
+            i02d: 'bi-cloud-sun',
+            i02n: 'bi-cloud-sun-fill',
+            i03d: 'bi-cloud',
+            i03n: 'bi-cloud-fill',
+            i04d: 'bi-clouds',
+            i04n: 'bi-cloud-fills',
+            i09d: 'bi-cloud-rain-heavy',
+            i09n: 'bi-cloud-rain-heavy-fill',
+            i10d: 'bi-cloud-drizzle',
+            i10n: 'bi-cloud-drizzle-fill',
+            i11d: 'bi-cloud-lightning',
+            i11n: 'bi-cloud-lightning-fill',
+            i13d: 'bi-cloud-snow',
+            i13n: 'bi-cloud-snow-fill',
+            i50d: 'bi-cloud-haze',
+            i50n: 'bi-cloud-haze-fill',
         };
 
         function onGetWeather(r) {
             console.log(r);
-            $weather
-                .find(".icon")
-                .addClass(weatherIcon["i" + r.weather[0].icon]);
-            $weather.find(".temp").text(r.main.temp);
-            $weather
-                .find(".date")
-                .text(moment(r.dt * 1000).format("YYYY. M. D. ddd"));
-            $weather
-                .find(".time > span")
-                .text(moment(r.dt * 1000).format("hh:mm"));
-            $weather
-                .find(".time > small")
-                .text(moment(r.dt * 1000).format("A"));
+            $weather.find('.icon').addClass(weatherIcon['i' + r.weather[0].icon]);
+            $weather.find('.temp').text(r.main.temp);
+            $weather.find('.date').text(moment(r.dt * 1000).format('YYYY. M. D. ddd'));
+            $weather.find('.time > span').text(moment(r.dt * 1000).format('hh:mm'));
+            $weather.find('.time > small').text(moment(r.dt * 1000).format('A'));
         }
 
         function onGetGeo(r) {
@@ -178,14 +247,14 @@ $(function () {
     }
 
     function slideDream() {
-        var swiper = new Swiper(".dream-wrapper .swiper-container", {
+        var swiper = new Swiper('.dream-wrapper .swiper-container', {
             pagination: {
-                el: ".dream-wrapper .pager-wrapper",
+                el: '.dream-wrapper .pager-wrapper',
                 clickable: true,
             },
             navigation: {
-                nextEl: ".dream-wrapper .bt-slide.right",
-                prevEl: ".dream-wrapper .bt-slide.left",
+                nextEl: '.dream-wrapper .bt-slide.right',
+                prevEl: '.dream-wrapper .bt-slide.left',
             },
             autoplay: {
                 delay: 3000,
@@ -203,7 +272,7 @@ $(function () {
             },
         });
 
-        $(".dream-wrapper .slide-stage").hover(
+        $('.dream-wrapper .slide-stage').hover(
             function () {
                 swiper.autoplay.stop();
             },
@@ -211,5 +280,56 @@ $(function () {
                 swiper.autoplay.start();
             }
         );
+    }
+
+    function slidePromo() {
+        var $promoWrapper = $('.promo-wrapper');
+        $slideWrap = $promoWrapper.find('.slide-wrap');
+        function onGetData(r) {
+            // for (var i = 0; i < r.promo.length; i++){}  아래와 같은 다른 표현 방식
+            r.promo.forEach(function (v, i) {
+                //파라미터 순서 반드시 밸류 다음 인덱스
+                var html = '';
+                html += '<li class="slide swiper-slide">';
+                html += '<div class="img-wrap">';
+                html += '<img src="' + v.src + '" alt="메뉴" class="w-100">';
+                html += '</div>';
+                html += '<div class="cont-wrap">';
+                html += '<h3 class="title">' + v.title + '</h3>';
+                html += '<div class="desc">' + v.desc + '</div>';
+                html += '</div>';
+                html += '</li>';
+
+                $slideWrap.append(html);
+            });
+            var swiper = new Swiper('.promo-wrapper .swiper-container', {
+                pagination: {
+                    el: '.promo-wrapper .pager-wrapper',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.promo-wrapper .bt-slide.right',
+                    prevEl: '.promo-wrapper .bt-slide.left',
+                },
+                autoplay: {
+                    delay: 3000,
+                },
+                loop: true,
+                slidesPerView: 1,
+                spaceBetween: 40,
+                breakpoints: {
+                    576: {
+                        slidesPerView: 2,
+                    },
+                    992: {
+                        slidesPerView: 3,
+                    },
+                    1200: {
+                        slidesPerView: 4
+                    }
+                },
+            });
+        }
+        $.get('../json/promotion.json', onGetData);
     }
 });
