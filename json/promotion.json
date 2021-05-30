@@ -1,4 +1,4 @@
-//object 표기
+
 {
 	"promo":[
 		{"id":1, "title":"PROMOTION","src": "../img/index/3438.png","desc":"스테이크 하우스 소믈리에 추천 1+1", "link":"#"},

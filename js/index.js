@@ -10,74 +10,22 @@ else idx = idx + 1 */
 	$('<i class='pager'></i>').appendTo($pagerSlide).click(onPagerClick).addClass((idx === i) ? 'active': '')
 } */
 
+
+
+
 /*************** Index *****************/
 $(function () {
     
-    init();
+    
 
-    function getSwipeOption(cls, opt) {
-    /*
-		- cls : '.promo-wrapper
-		- opt 
-		{
-			pager: true,
-			navi: true,
-			auto: true,
-			delay: 3000,
-			loop: true,
-			space: 40,
-			break: 4
-		}
-		*/
-		var pagination = (opt.pager === false) ? false : {
-			el: cls + ' .pager-wrapper',
-			clickable: true
-		}
-
-		var navigation = (opt.navi === false) ? false : {
-			nextEl: cls + ' .bt-slide.right',
-			prevEl: cls + ' .bt-slide.left',
-		}
-
-		var autoplay = (opt.auto === false) ? false : {
-			// delay: opt.delay ? opt.delay : 3000
-			delay: opt.delay || 3000
-		}
-
-		var breakpoints = {}
-    return{
-        pagination: {
-            el: '.dream-wrapper .pager-wrapper',
-                clickable: true,
-            },
-        navigation: {
-            nextEl: '.dream-wrapper .bt-slide.right',
-            prevEl: '.dream-wrapper .bt-slide.left',
-            },
-        autoplay: {
-            delay: 3000,
-            },
-        loop: true,
-            slidesPerView: 1,
-            spaceBetween: 40,
-            breakpoints: {
-            576: {
-                slidesPerView: 2,
-                },
-            992: {
-                slidesPerView: 3,
-                },
-            }
-    }
-    }
-
-    function init() {
+ 
+   
         weather();
         setCookie();
         slideMain();
         slideDream();
         slidePromo();
-    }
+    
 
     function setCookie() {
         //쿠키
@@ -140,58 +88,59 @@ $(function () {
                 clearTimeout(timeout);
                 timeout = setTimeout(onPlay, gap);
             }
-        }
-        function onLoadedVideo() {
-            //비디오 속도
-            if (video.readyState >= 2) {
-                video.playbackRate = 4.0;
+        
+            function onLoadedVideo() {
+                //비디오 속도
+                if (video.readyState >= 2) {
+                    video.playbackRate = 4.0;
+                }
             }
-        }
 
-        function onPlay(e) {
-            //페이저 클릭 시
-            if (e !== 'pager') idx = idx == lastIdx ? 0 : idx + 1;
-            $pagerSlide.find('.pager').removeClass('active');
+            function onPlay(e) {
+                //페이저 클릭 시
+                if (e !== 'pager') idx = idx == lastIdx ? 0 : idx + 1;
+                $pagerSlide.find('.pager').removeClass('active');
+                $pagerSlide.find('.pager').eq(idx).addClass('active');
+                $slide.eq(idx).css({
+                    'z-index': depth++,
+                    left: '100%',
+                });
+                $slide.removeClass('active');
+                $slide.eq(idx).stop().animate(
+                    {
+                        left: 0,
+                    },
+                    speed,
+                    ani
+                );
+            }
+            function onModalVideo() {
+                //비디오 모달 열기
+                $('.modal-video').show();
+            }
+
+            function onModalVideoClose() {
+                //비디오 모달 닫기
+                $('.modal-video').hide();
+            }
+
+            function onPagerClick() {
+                idx = $(this).index();
+                onPlay('pager');
+            }
+
+            $slide.eq(idx).css('z-index', depth++);
+            $slide.eq(idx).addClass('active');
+            for (var i = 0; i < len; i++) $pagerSlide.append('<i class="pager"></i>');
+            $pagerSlide.find('.pager').click(onPagerClick);
             $pagerSlide.find('.pager').eq(idx).addClass('active');
-            $slide.eq(idx).css({
-                'z-index': depth++,
-                left: '100%',
-            });
-            $slide.removeClass('active');
-            $slide.eq(idx).stop().animate(
-                {
-                    left: 0,
-                },
-                speed,
-                ani
-            );
-        }
-        function onModalVideo() {
-            //비디오 모달 열기
-            $('.modal-video').show();
-        }
+            video.addEventListener('loadeddata', onLoadedVideo);
+            video.addEventListener('ended', onPlay);
+            $('.bt-video').click(onModalVideo); //비디오 플레이 버튼 누르면 비디오 모달열기
+            $('.modal-video').find('.bt-close').click(onModalVideoClose); //비디오 모달 열린 상태에서 닫기 누르면 비디오 모달 닫기
 
-        function onModalVideoClose() {
-            //비디오 모달 닫기
-            $('.modal-video').hide();
+            ani(); //콜백 함수 실행
         }
-
-        function onPagerClick() {
-            idx = $(this).index();
-            onPlay('pager');
-        }
-
-        $slide.eq(idx).css('z-index', depth++);
-        $slide.eq(idx).addClass('active');
-        for (var i = 0; i < len; i++) $pagerSlide.append('<i class="pager"></i>');
-        $pagerSlide.find('.pager').click(onPagerClick);
-        $pagerSlide.find('.pager').eq(idx).addClass('active');
-        video.addEventListener('loadeddata', onLoadedVideo);
-        video.addEventListener('ended', onPlay);
-        $('.bt-video').click(onModalVideo); //비디오 플레이 버튼 누르면 비디오 모달열기
-        $('.modal-video').find('.bt-close').click(onModalVideoClose); //비디오 모달 열린 상태에서 닫기 누르면 비디오 모달 닫기
-
-        ani(); //콜백 함수 실행
     }
 
     function weather() {
@@ -247,40 +196,13 @@ $(function () {
     }
 
     function slideDream() {
-        var swiper = new Swiper('.dream-wrapper .swiper-container', {
-            pagination: {
-                el: '.dream-wrapper .pager-wrapper',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.dream-wrapper .bt-slide.right',
-                prevEl: '.dream-wrapper .bt-slide.left',
-            },
-            autoplay: {
-                delay: 3000,
-            },
-            loop: true,
-            slidesPerView: 1,
-            spaceBetween: 40,
-            breakpoints: {
-                576: {
-                    slidesPerView: 2,
-                },
-                992: {
-                    slidesPerView: 3,
-                },
-            },
-        });
-
-        $('.dream-wrapper .slide-stage').hover(
-            function () {
-                swiper.autoplay.stop();
-            },
-            function () {
-                swiper.autoplay.start();
-            }
-        );
+        var el = '.dream-wrapper'
+        var container = '.dream-wrapper .swiper-container'
+        var swiper = new Swiper(container,getSwiper(el,{break:3}));
+        swiperHover(swiper, el)
     }
+
+      
 
     function slidePromo() {
         var $promoWrapper = $('.promo-wrapper');
@@ -302,34 +224,13 @@ $(function () {
 
                 $slideWrap.append(html);
             });
-            var swiper = new Swiper('.promo-wrapper .swiper-container', {
-                pagination: {
-                    el: '.promo-wrapper .pager-wrapper',
-                    clickable: true,
-                },
-                navigation: {
-                    nextEl: '.promo-wrapper .bt-slide.right',
-                    prevEl: '.promo-wrapper .bt-slide.left',
-                },
-                autoplay: {
-                    delay: 3000,
-                },
-                loop: true,
-                slidesPerView: 1,
-                spaceBetween: 40,
-                breakpoints: {
-                    576: {
-                        slidesPerView: 2,
-                    },
-                    992: {
-                        slidesPerView: 3,
-                    },
-                    1200: {
-                        slidesPerView: 4
-                    }
-                },
-            });
+
+            var el = '.promo-wrapper'
+            var container = '.promo-wrapper .swiper-container'
+            var swiper = new Swiper(container, getSwiper(el, { break: 4 }));
+        
+
+            $.get('../json/promotion.json', onGetData);
         }
-        $.get('../json/promotion.json', onGetData);
     }
 });
