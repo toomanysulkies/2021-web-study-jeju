@@ -187,7 +187,7 @@ $(function () {
     }
 
     function slideDream() {
-        var swiper = getSwiper('.dream-wrapper', { break: 3 });
+        var swiper = getSwiper(' .dream-wrapper', { break: 3 });
     }
 
     function slidePromo() {
@@ -199,8 +199,8 @@ $(function () {
                 //파라미터 순서 반드시 밸류 다음 인덱스
                 var html = '';
                 html += '<li class="slide swiper-slide">';
-                html += '<div class="img-wrap">';
-                html += '<img src="' + v.src + '" alt="메뉴" class="w-100">';
+                html += '<div class="img-wrap ratio" data-ratio="1">';
+                html += '<div class="ratio-bg" style="background-image: url(' + v.src + ');"></div>';
                 html += '</div>';
                 html += '<div class="cont-wrap">';
                 html += '<h3 class="title">' + v.title + '</h3>';

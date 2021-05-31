@@ -1,7 +1,7 @@
 /*************** getSwiper *****************/
 function getSwiper(el, opt) {
     /*
-        - cls : '.promo-wrapper
+        - el: 
         - opt 
         {
             pager: true,
@@ -15,14 +15,14 @@ function getSwiper(el, opt) {
         }
         */
     var opt = opt || {}; //opt는 opt 그대로이거나 있다면 {} 적용
-    var autoEl = el + ' ' + (opt.autoEl || '.slide-stage'); //새 값을 넣지 않으면
+    var autoEl = el + '' + (opt.autoEl || '.slide-stage'); //새 값을 넣지 않으면 slide-stage가 el에 붙는다
     var pagination =
         opt.pager === false
             ? false
             : {
                   el: el + ' .pager-wrapper',
                   clickable: true,
-              };
+              }; //, el에 페이저 래퍼를 붙인다
 
     var navigation =
         opt.navi === false
@@ -30,7 +30,7 @@ function getSwiper(el, opt) {
             : {
                   nextEl: el + ' .bt-slide.right',
                   prevEl: el + ' .bt-slide.left',
-              };
+              }; //좌우 방향 버튼 붙이기
 
     var autoplay =
         opt.auto === false
@@ -38,7 +38,7 @@ function getSwiper(el, opt) {
             : {
                   // delay: opt.delay ? opt.delay : 3000
                   delay: opt.delay || 3000,
-              };
+              }; //delay에 다른 값을 넣지 않으면 3초간 딜레이
 
     var breakpoints = {};
     if (opt.break == 2) {
@@ -65,7 +65,7 @@ function getSwiper(el, opt) {
         };
     }
 
-    var swiper = new Swiper(el + '.swiper-container', {
+    var swiper = new Swiper(el + ' .swiper-container', {
         pagination: pagination,
         navigation: navigation,
         autoplay: autoplay,
@@ -74,6 +74,7 @@ function getSwiper(el, opt) {
         spaceBetween: opt.space || 40,
         breakpoints: breakpoints,
     });
+
     $(autoEl).hover(
         function () {
             swiper.autoplay.stop();
@@ -82,6 +83,8 @@ function getSwiper(el, opt) {
             swiper.autoplay.start();
         }
     );
+    $(window).trigger('resize');
+
     return swiper;
 }
 

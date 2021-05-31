@@ -120,7 +120,7 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-    content: "";
+    content: '';
     content: none;
 }
 table {
@@ -156,7 +156,7 @@ button {
 /******************** Base ***********************/
 .clearfix::after {
     display: block;
-    content: "";
+    content: '';
     clear: both;
 }
 .img {
@@ -168,7 +168,12 @@ button {
 .fa {
     line-height: 1;
 }
-
+.ratio-bg {
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
 .swiper-button-prev,
 .swiper-button-next,
 .swiper-pagination * {
