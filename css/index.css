@@ -1,5 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;700&display=swap');
 /* font-family: "Noto Sans KR", sans-serif; */
 /* font-family: 'Jost', sans-serif; */
 
@@ -15,7 +15,7 @@ body > section {
 }
 .title-wrap h2.title {
     font-size: 3.5em;
-    font-family: "Jost", sans-serif;
+    font-family: 'Jost', sans-serif;
     letter-spacing: 0.05em;
     margin-bottom: 0.25em;
 }
@@ -239,10 +239,10 @@ body > section {
 .dream-wrapper .slide-stage .img-wrap {
     overflow: hidden;
 }
-.dream-wrapper .slide-stage .img-wrap img {
+.dream-wrapper .slide-stage .img-wrap > .ratio-bg {
     transition: all 0.75s;
 }
-.dream-wrapper .slide-stage .img-wrap:hover img {
+.dream-wrapper .slide-stage .img-wrap:hover > .ratio-bg {
     transform: scale(1.1);
 }
 .dream-wrapper .slide-stage .cont-wrap .title {
@@ -295,8 +295,62 @@ body > section {
 .dream-wrapper .bt-wrap .bt-ghost.white {
     padding: 1em 3em;
 }
-/**********************promo-wrapper  *********************/
+/**********************promo-wrapper*********************/
+.promo-wrapper {
+    padding: 6em 0;
+}
+.promo-wrapper .slide-stage {
+    position: relative;
+    margin-bottom: 6em;
+}
+.promo-wrapper .slide-stage > .swiper-container {
+    width: calc(100% - 60px);
+    overflow: hidden;
+}
+.promo-wrapper .slide-stage > .swiper-container > .swiper-wrapper {
+    width: 100%;
+}
+.promo-wrapper .slide-stage .slide {
+    cursor: pointer;
+}
+.promo-wrapper .slide-stage .cont-wrap {
+    padding: 8% 0;
+    border-bottom: 1px solid #ddd;
+}
+.promo-wrapper .slide-stage .img-wrap {
+    overflow: hidden;
+}
+.promo-wrapper .slide-stage .img-wrap > .ratio-bg {
+    transition: all 0.75s;
+}
+.promo-wrapper .slide-stage .img-wrap:hover > .ratio-bg {
+    transform: scale(1.1);
+}
+.promo-wrapper .slide-stage .cont-wrap .title {
+    margin-bottom: 0.5em;
+    color: #b38859;
+}
+.promo-wrapper .slide-stage .cont-wrap .desc {
+    font-size: 1.5em;
+    line-height: 1.25;
+    color: #333;
+}
+.promo-wrapper .pager-slide {
+    text-align: center;
+    margin-top: 2em;
+    position: absolute;
+    width: 100%;
+}
+.promo-wrapper .pager-slide .swiper-pagination-bullet-active {
+    border: 1px solid #b38859;
+}
 
+.promo-wrapper .bt-wrap {
+    text-align: center;
+}
+.promo-wrapper .bt-wrap .bt-ghost.white {
+    padding: 1em 3em;
+}
 /**********************room-wrapper  *********************/
 
 /**********************svc-wrapper  *********************/

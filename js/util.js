@@ -83,12 +83,19 @@ function getSwiper(el, opt) {
             swiper.autoplay.start();
         }
     );
-    $(window).trigger('resize');
 
+    function onResize(e) {
+        $(el + ' .ratio').each(function (i) {
+            //.ratio마다
+            var ratio = $(this).data('ratio'); // ratio는 현재 객체의 data-ratio
+            var width = $(this).innerWidth(); //현재 객체의 내부 너비
+            var height = width * Number(ratio); //높이는 너비에 현재 객체의 비율(data-ratio) 곱하기
+            $(this).innerHeight(height); //이 객체의 내부 높이는 너비에 현재 객체의 비율을 곱한 것이다 즉, 너비에 따라서 높이 비율이 고정된다
+        });
+    }
+    $(window).resize(onResize).trigger('resize');
     return swiper;
 }
-
-function swiperHover(swiper, el) {}
 
 /*************** Scroll Spy *****************/
 function scrollSpy(el, cls, _gap) {

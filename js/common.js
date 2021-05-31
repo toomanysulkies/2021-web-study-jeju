@@ -59,7 +59,6 @@ $(function () {
 
     /*************** 이벤트 등록 *****************/
     $(window).scroll(onScroll).trigger('scroll');
-    $(window).resize(onResize).trigger('resize');
 
     $('.header-wrapper .navi').mouseenter(onNaviEnter);
     $('.header-wrapper .navi').mouseleave(onNaviLeave);
@@ -96,16 +95,6 @@ $(function () {
         var scTop = $(this).scrollTop();
         scrollNotice(scTop);
         movingTop(scTop);
-    }
-
-    function onResize(e) {
-        $('.ratio').each(function (i) {
-            //.ratio마다
-            var ratio = $(this).data('ratio'); // ratio는 현재 객체의 data-ratio
-            var width = $(this).innerWidth(); //현재 객체의 내부 너비
-            var height = width * Number(ratio); //높이는 너비에 현재 객체의 비율(data-ratio) 곱하기
-            $(this).innerHeight(height); //이 객체의 내부 높이는 너비에 현재 객체의 비율을 곱한 것이다 즉, 너비에 따라서 높이 비율이 고정된다
-        });
     }
 
     function onShowNotice() {
