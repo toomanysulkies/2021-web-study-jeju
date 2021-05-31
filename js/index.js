@@ -10,22 +10,13 @@ else idx = idx + 1 */
 	$('<i class='pager'></i>').appendTo($pagerSlide).click(onPagerClick).addClass((idx === i) ? 'active': '')
 } */
 
-
-
-
 /*************** Index *****************/
 $(function () {
-    
-    
-
- 
-   
-        weather();
-        setCookie();
-        slideMain();
-        slideDream();
-        slidePromo();
-    
+    weather();
+    setCookie();
+    slideMain();
+    slideDream();
+    slidePromo();
 
     function setCookie() {
         //쿠키
@@ -88,7 +79,7 @@ $(function () {
                 clearTimeout(timeout);
                 timeout = setTimeout(onPlay, gap);
             }
-        
+
             function onLoadedVideo() {
                 //비디오 속도
                 if (video.readyState >= 2) {
@@ -172,7 +163,7 @@ $(function () {
         };
 
         function onGetWeather(r) {
-            console.log(r);
+            // console.log(r);
             $weather.find('.icon').addClass(weatherIcon['i' + r.weather[0].icon]);
             $weather.find('.temp').text(r.main.temp);
             $weather.find('.date').text(moment(r.dt * 1000).format('YYYY. M. D. ddd'));
@@ -196,13 +187,8 @@ $(function () {
     }
 
     function slideDream() {
-        var el = '.dream-wrapper'
-        var container = '.dream-wrapper .swiper-container'
-        var swiper = new Swiper(container,getSwiper(el,{break:3}));
-        swiperHover(swiper, el)
+        var swiper = getSwiper('.dream-wrapper', { break: 3 });
     }
-
-      
 
     function slidePromo() {
         var $promoWrapper = $('.promo-wrapper');
@@ -221,16 +207,18 @@ $(function () {
                 html += '<div class="desc">' + v.desc + '</div>';
                 html += '</div>';
                 html += '</li>';
-
                 $slideWrap.append(html);
             });
 
-            var el = '.promo-wrapper'
-            var container = '.promo-wrapper .swiper-container'
-            var swiper = new Swiper(container, getSwiper(el, { break: 4 }));
+            var swiper = getSwiper('.promo-wrapper', { break: 4 }); //스와이퍼 만들 때 이 한줄이면 끝!
+            /*
+            util.js에서 가져온 getSwiper 함수
+            container('.promo-wrapper .swiper-container)에 적용한다
+            변화 옵션값은 break:4
         
-
-            $.get('../json/promotion.json', onGetData);
+        
+                                                       */
         }
+        $.get('../json/promotion.json', onGetData);
     }
 });
