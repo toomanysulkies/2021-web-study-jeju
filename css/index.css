@@ -331,7 +331,7 @@ body > section {
     color: #b38859;
 }
 .promo-wrapper .slide-stage .cont-wrap .desc {
-    font-size: 1.5em;
+    font-size: 1.2em;
     line-height: 1.25;
     color: #333;
 }
@@ -345,9 +345,11 @@ body > section {
 /**********************style-wrapper  *********************/
 .style-wrapper {
     background-color: #f5f0e7;
+    padding: 5em 0 0 0;
 }
 .style-wrapper .list-wrap {
-    display: flex; /*list-wrap 안의 객체들(list)이 나열됨*/
+    display: flex;
+    /*list-wrap 안의 객체들(list)이 나열됨*/
 }
 .style-wrapper .list {
     flex: 0 0 33.3333%; /*부모 속성의 33%가량 */
@@ -376,23 +378,72 @@ body > section {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 10%;
+    color: #fff;
 }
 
 .style-wrapper .list .title {
     font-size: 2.5em;
-    margin-bottom: 1em;
-}
-.style-wrapper .list .bar {
 }
 .style-wrapper .list .content {
     font-size: 1.125em;
     width: 80%;
-    line-height: 1.5;
+    line-height: 2;
     text-align: center;
-    margin-bottom: 2.5em;
 }
 .style-wrapper .list .bt-ghost {
     border: 1px solid #fff;
+}
+.style-wrapper .list .bt-wrap {
+    width: 80%;
+}
+.style-wrapper .list .bt-wrap > div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.style-wrapper .list .bt-wrap .bt-ghost {
+    margin-bottom: 10px;
+    flex: 0 0 calc(50% - 5px);
+}
+.style-wrapper .list .bt-wrap .bt-ghost:last-child {
+    flex: 0 0 100%;
+}
+
+/*moving-animation*/
+.style-wrapper .list .bar {
+    width: 30px;
+    height: 2px;
+    margin: 0;
+    background-color: #fff;
+    transition: transform 0.35s;
+    transform: scaleX(0);
+}
+.style-wrapper .list .moving-stage {
+    height: 0;
+    overflow: hidden;
+    margin-bottom: 0;
+}
+.style-wrapper .list .moving-box {
+    transition: all 0.35s;
+    transform: translateY(100%);
+    opacity: 0;
+}
+
+.style-wrapper .list:hover .bar {
+    margin: 2em auto 1.5em auto;
+    transform: scaleX(1);
+}
+.style-wrapper .list:hover .moving-stage {
+    height: auto;
+}
+
+.style-wrapper .list:hover .moving-stage.content {
+    margin-bottom: 2.5em;
+}
+.style-wrapper .list:hover .moving-box {
+    transform: translateY(0);
+    opacity: 1;
 }
 
 /**********************room-wrapper  *********************/
