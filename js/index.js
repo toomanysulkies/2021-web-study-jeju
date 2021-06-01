@@ -18,6 +18,7 @@ $(function () {
     slideDream();
     slidePromo();
     initStyle();
+    slideRoom();
 
     function setCookie() {
         //쿠키
@@ -233,5 +234,9 @@ $(function () {
                 $(this).innerHeight(height);
             });
         }
+    }
+
+    function slideRoom() {
+        var swiper = getSwiper('.room-wrapper', { break: 2, pager: false });
     }
 });
