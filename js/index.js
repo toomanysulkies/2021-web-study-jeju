@@ -69,7 +69,28 @@ $(function () {
         var speed = 500;
         var timeout;
 
-        function ani() {
+        function onPagerClick() {
+            idx = $(this).index();
+            onPlay('pager');
+        }
+
+        function onModalVideo() {
+            //비디오 모달 열기
+            $('.modal-video').show();
+        }
+
+        function onModalVideoClose() {
+            //비디오 모달 닫기
+            $('.modal-video').hide();
+        }
+        function onLoadedVideo() {
+            //비디오 속도
+            if (video.readyState >= 2) {
+                video.playbackRate = 4.0;
+            }
+        }
+
+        function onAni() {
             //비디오 플레이 실행 함수 ani
             $(this).addClass('active'); //지금 객체에 액티브 클래스 실행
             video.currentTime = 0; //0초부터 시작
@@ -80,59 +101,38 @@ $(function () {
                 clearTimeout(timeout);
                 timeout = setTimeout(onPlay, gap);
             }
-
-            function onLoadedVideo() {
-                //비디오 속도
-                if (video.readyState >= 2) {
-                    video.playbackRate = 4.0;
-                }
-            }
-
-            function onPlay(e) {
-                //페이저 클릭 시
-                if (e !== 'pager') idx = idx == lastIdx ? 0 : idx + 1;
-                $pagerSlide.find('.pager').removeClass('active');
-                $pagerSlide.find('.pager').eq(idx).addClass('active');
-                $slide.eq(idx).css({
-                    'z-index': depth++,
-                    left: '100%',
-                });
-                $slide.removeClass('active');
-                $slide.eq(idx).stop().animate(
-                    {
-                        left: 0,
-                    },
-                    speed,
-                    ani
-                );
-            }
-            function onModalVideo() {
-                //비디오 모달 열기
-                $('.modal-video').show();
-            }
-
-            function onModalVideoClose() {
-                //비디오 모달 닫기
-                $('.modal-video').hide();
-            }
-
-            function onPagerClick() {
-                idx = $(this).index();
-                onPlay('pager');
-            }
-
-            $slide.eq(idx).css('z-index', depth++);
-            $slide.eq(idx).addClass('active');
-            for (var i = 0; i < len; i++) $pagerSlide.append('<i class="pager"></i>');
-            $pagerSlide.find('.pager').click(onPagerClick);
-            $pagerSlide.find('.pager').eq(idx).addClass('active');
-            video.addEventListener('loadeddata', onLoadedVideo);
-            video.addEventListener('ended', onPlay);
-            $('.bt-video').click(onModalVideo); //비디오 플레이 버튼 누르면 비디오 모달열기
-            $('.modal-video').find('.bt-close').click(onModalVideoClose); //비디오 모달 열린 상태에서 닫기 누르면 비디오 모달 닫기
-
-            ani(); //콜백 함수 실행
         }
+
+        function onPlay(e) {
+            //페이저 클릭 시
+            if (e !== 'pager') idx = idx == lastIdx ? 0 : idx + 1;
+            $pagerSlide.find('.pager').removeClass('active');
+            $pagerSlide.find('.pager').eq(idx).addClass('active');
+            $slide.eq(idx).css({
+                'z-index': depth++,
+                left: '100%',
+            });
+            $slide.removeClass('active');
+            $slide.eq(idx).stop().animate(
+                {
+                    left: 0,
+                },
+                speed,
+                onAni
+            );
+        }
+
+        $slide.eq(idx).css('z-index', depth++);
+        $slide.eq(idx).addClass('active');
+        for (var i = 0; i < len; i++) $pagerSlide.append('<i class="pager"></i>');
+        $pagerSlide.find('.pager').click(onPagerClick);
+        $pagerSlide.find('.pager').eq(idx).addClass('active');
+        video.addEventListener('loadeddata', onLoadedVideo);
+        video.addEventListener('ended', onPlay);
+        $('.bt-video').click(onModalVideo); //비디오 플레이 버튼 누르면 비디오 모달열기
+        $('.modal-video').find('.bt-close').click(onModalVideoClose); //비디오 모달 열린 상태에서 닫기 누르면 비디오 모달 닫기
+
+        video.addEventListener('loadedmetadata', onAni);
     }
 
     function weather() {
@@ -193,7 +193,7 @@ $(function () {
 
     function slidePromo() {
         var $promoWrapper = $('.promo-wrapper');
-        $slideWrap = $promoWrapper.find('.slide-wrap');
+        $slideWrapper = $promoWrapper.find('.slide-wrapper');
         function onGetData(r) {
             // for (var i = 0; i < r.promo.length; i++){}  아래와 같은 다른 표현 방식
             r.promo.forEach(function (v, i) {
@@ -208,7 +208,7 @@ $(function () {
                 html += '<div class="desc">' + v.desc + '</div>';
                 html += '</div>';
                 html += '</li>';
-                $slideWrap.append(html);
+                $slideWrapper.append(html);
             });
 
             var swiper = getSwiper('.promo-wrapper', { break: 4, pager: false }); //스와이퍼 만들 때 이 한줄이면 끝!
