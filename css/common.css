@@ -1,16 +1,20 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;700&display=swap');
 /* font-family: "Noto Sans KR", sans-serif; */
 /* font-family: 'Jost', sans-serif; */
 /********************** 글로벌 설정 *********************/
 html,
 body {
     font-size: 16px;
-    font-family: "Jost", "Noto Sans KR", sans-serif;
+    font-family: 'Jost', 'Noto Sans KR', sans-serif;
     height: 10000px;
 }
 .wrapper {
     width: 1368px;
+    margin: auto;
+}
+.wrapper-lg {
+    width: 1568px;
     margin: auto;
 }
 .bt-ghost {
@@ -39,7 +43,7 @@ body {
     color: #fff !important;
 }
 .bt-ghost.angle::after {
-    content: ">";
+    content: '>';
     display: inline-block;
     margin-left: 0.5em;
     margin-right: -0.5em;
@@ -266,7 +270,7 @@ body {
     width: 40px;
     height: 2px;
     background-color: #b38859;
-    content: "";
+    content: '';
     display: block;
     position: absolute;
     transform-origin: left;
@@ -295,7 +299,7 @@ body {
 }
 
 .header-wrapper .sub-wrap h3.title {
-    font-family: "Jost", sans-serif;
+    font-family: 'Jost', sans-serif;
     color: #222;
     font-size: 1.25em;
     padding-bottom: 1em;
@@ -304,7 +308,7 @@ body {
 }
 
 .header-wrapper .sub-wrap h3.title::before {
-    content: "∙";
+    content: '∙';
     display: inline-block;
     margin-right: 0.25em;
     font-size: 2em;
@@ -334,7 +338,7 @@ body {
 .header-wrapper .sub-wrap h4.title::after {
     width: 20px;
     height: 2px;
-    content: "";
+    content: '';
     display: block;
     margin-top: 0.75em;
     background-color: #b38859;
@@ -416,6 +420,12 @@ body {
 }
 
 /********************** 반응형 설정 *********************/
+@media (max-width: 1599px) {
+    .wrapper-lg {
+        width: calc(100% - 2rem);
+        margin: 0 1rem;
+    }
+}
 @media (max-width: 1399px) {
     .wrapper {
         width: calc(100% - 2rem);

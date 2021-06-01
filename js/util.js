@@ -85,7 +85,7 @@ function getSwiper(el, opt) {
     );
 
     function onResize(e) {
-        $(el + ' .ratio').each(function (i) {
+        $(el + ' .ratio-wrap').each(function (i) {
             //.ratio마다
             var ratio = $(this).data('ratio'); // ratio는 현재 객체의 data-ratio
             var width = $(this).innerWidth(); //현재 객체의 내부 너비

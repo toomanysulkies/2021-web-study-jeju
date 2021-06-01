@@ -19,10 +19,10 @@ body > section {
     letter-spacing: 0.05em;
     margin-bottom: 0.25em;
 }
-/* .title-wrap h3.title {
+.title-wrap h3.title {
     font-size: 2em;
     margin-bottom: 0.175em;
-} */
+}
 .title-wrap h4.title {
     font-size: 1.125em;
     padding: 0.125em 0;
@@ -335,15 +335,6 @@ body > section {
     line-height: 1.25;
     color: #333;
 }
-.promo-wrapper .pager-slide {
-    text-align: center;
-    margin-top: 2em;
-    position: absolute;
-    width: 100%;
-}
-.promo-wrapper .pager-slide .swiper-pagination-bullet-active {
-    border: 1px solid #b38859;
-}
 
 .promo-wrapper .bt-wrap {
     text-align: center;
@@ -351,6 +342,59 @@ body > section {
 .promo-wrapper .bt-wrap .bt-ghost.white {
     padding: 1em 3em;
 }
+/**********************style-wrapper  *********************/
+.style-wrapper {
+    background-color: #f5f0e7;
+}
+.style-wrapper .list-wrap {
+    display: flex; /*list-wrap 안의 객체들(list)이 나열됨*/
+}
+.style-wrapper .list {
+    flex: 0 0 33.3333%; /*부모 속성의 33%가량 */
+    position: relative; /*relative가 없으면 밑의 hover-bg에서 body를 부모로 받아 너비가 늘어난다*/
+}
+.style-wrapper .list .hover-bg {
+    background-color: rgba(179, 136, 89, 0.95);
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all 0.5s;
+}
+.style-wrapper .list:hover .hover-bg {
+    opacity: 1;
+}
+.style-wrapper .list .hover-cont {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.style-wrapper .list .title {
+    font-size: 2.5em;
+    margin-bottom: 1em;
+}
+.style-wrapper .list .bar {
+}
+.style-wrapper .list .content {
+    font-size: 1.125em;
+    width: 80%;
+    line-height: 1.5;
+    text-align: center;
+    margin-bottom: 2.5em;
+}
+.style-wrapper .list .bt-ghost {
+    border: 1px solid #fff;
+}
+
 /**********************room-wrapper  *********************/
 
 /**********************svc-wrapper  *********************/

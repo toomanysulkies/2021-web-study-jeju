@@ -17,6 +17,7 @@ $(function () {
     slideMain();
     slideDream();
     slidePromo();
+    initStyle();
 
     function setCookie() {
         //쿠키
@@ -199,7 +200,7 @@ $(function () {
                 //파라미터 순서 반드시 밸류 다음 인덱스
                 var html = '';
                 html += '<li class="slide swiper-slide">';
-                html += '<div class="img-wrap ratio" data-ratio="1">';
+                html += '<div class="img-wrap ratio-wrap" data-ratio="1">';
                 html += '<div class="ratio-bg" style="background-image: url(' + v.src + ');"></div>';
                 html += '</div>';
                 html += '<div class="cont-wrap">';
@@ -210,7 +211,7 @@ $(function () {
                 $slideWrap.append(html);
             });
 
-            var swiper = getSwiper('.promo-wrapper', { break: 4 }); //스와이퍼 만들 때 이 한줄이면 끝!
+            var swiper = getSwiper('.promo-wrapper', { break: 4, pager: false }); //스와이퍼 만들 때 이 한줄이면 끝!
             /*
             util.js에서 가져온 getSwiper 함수
             container('.promo-wrapper .swiper-container)에 적용한다
@@ -220,5 +221,17 @@ $(function () {
                                                        */
         }
         $.get('../json/promotion.json', onGetData);
+    }
+
+    function initStyle() {
+        $(window).resize(onResize).trigger('resize');
+        function onResize() {
+            $(' .style-wrapper .ratio-wrap').each(function (i) {
+                var ratio = $(this).data('ratio');
+                var width = $(this).innerWidth();
+                var height = width * Number(ratio);
+                $(this).innerHeight(height);
+            });
+        }
     }
 });
