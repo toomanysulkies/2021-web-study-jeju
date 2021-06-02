@@ -12,10 +12,17 @@ body {
 .wrapper {
     width: 1368px;
     margin: auto;
+    position: relative;
 }
 .wrapper-lg {
     width: 1568px;
     margin: auto;
+    position: relative;
+}
+.wrapper-xl {
+    width: 1768px;
+    margin: auto;
+    position: relative;
 }
 .bt-ghost {
     padding: 0.875em 1.75em;
@@ -118,7 +125,15 @@ body {
     justify-content: center;
     font-size: 2em;
 }
-
+.bt-slide.gold {
+    background-color: rgba(0, 0, 0, 0.75);
+    color: #fff;
+    transition: all 0.35s;
+}
+.bt-slide.gold:hover {
+    background-color: #b38859;
+    color: #fff;
+}
 .bt-slide.left {
     left: 0;
 }
@@ -420,6 +435,12 @@ body {
 }
 
 /********************** 반응형 설정 *********************/
+@media (max-width: 1799px) {
+    .wrapper-xl {
+        width: calc(100% - 2rem);
+        margin: 0 1rem;
+    }
+}
 @media (max-width: 1599px) {
     .wrapper-lg {
         width: calc(100% - 2rem);

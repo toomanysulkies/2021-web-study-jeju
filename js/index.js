@@ -237,6 +237,37 @@ $(function () {
     }
 
     function slideRoom() {
-        var swiper = getSwiper('.room-wrapper', { break: 2, pager: false });
+        var room = [], //room은 json에서 가져온 "room";[]배열
+            swiper; //swiper도 지역변수 선언
+        var $movingBox = $('.room-wrapper .desc-wrapper .moving-box');
+        var $tag = $('.room-wrapper .desc-wrapper .tag > div');
+        var $title = $('.room-wrapper .desc-wrapper .title > div');
+        var $desc = $('.room-wrapper .desc-wrapper .desc > div');
+        function onGetData(r) {
+            room = r.room.slice(); //room의 배열을 하나씩 잘라서 room 안에 넣기
+            console.log(room);
+
+            showDesc(0);
+        }
+        swiper = getSwiper('.room-wrapper', { break: 2, speed: 600 });
+        swiper.on('slideChange', onBefore); //slideChange는 swiper.API의 키워드다.
+        //slideChange: 현재 활성 슬라이드가 변경되면 이벤트가 시작된다
+        swiper.on('slideChangeTransitionEnd', onChange); //slideChangeTransitionEnd:다른 슬라이드 (다음 또는 이전)로 애니메이션 후 이벤트가 시작됩니다.
+
+        function onBefore(e) {
+            $movingBox.removeClass('active');
+        }
+        function onChange(e) {
+            var idx = e.realIndex;
+            showDesc(idx);
+        }
+        function showDesc(n) {
+            $tag.text(room[n].tag);
+            $title.text(room[n].title);
+            $desc.text(room[n].desc);
+            $movingBox.addClass('active');
+        }
+
+        $.get('../json/room.json', onGetData);
     }
 });

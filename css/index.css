@@ -8,6 +8,8 @@ body > section {
     z-index: 3;
     background-color: #fff;
     padding: 5em 0;
+    width: 100%;
+    overflow: hidden;
 }
 .title-wrap {
     text-align: center;
@@ -439,17 +441,63 @@ body > section {
     position: relative;
     margin-bottom: 6em;
 }
-.room-wrapper .slide-stage > .swiper-container {
-    width: calc(100% - 60px);
+.room-wrapper .slide-stage .slide-bg {
+    background-image: linear-gradient(to right, #28354b, #28354b 60%, #fff 60%, #fff); /*linear-gradient에서 같은 지점값을 입력하면(다른 색상이 같은 % 공유할 때) 경계가 명확히 구분 되는 색영역이 설정된다.*/
+}
+.room-wrapper .slide-stage .swiper-container {
+    width: calc(90% - 60px);
+    transform: translate(40%, 15%);
 }
 .room-wrapper .slide-stage .pager-slide {
     text-align: center;
-    margin-top: 2em;
+    margin-top: 5em;
     position: absolute;
     width: 100%;
 }
 .room-wrapper .slide-stage .pager-slide .swiper-pagination-bullet-active {
     border: 1px solid #b38859;
+}
+.room-wrapper .desc-wrapper {
+    position: absolute;
+    width: 35%;
+    height: 100%;
+    top: 0;
+    left: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    color: #fff;
+    /* border: 1px solid yellow; */
+}
+.room-wrapper .desc-wrapper .tag {
+    color: #b38859;
+    font-size: 1.125em;
+    margin-bottom: 0.5em;
+}
+.room-wrapper .desc-wrapper .title {
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
+}
+.room-wrapper .desc-wrapper .desc {
+    font-size: 1.125em;
+    margin-bottom: 1em;
+    color: #999;
+    line-height: 1.5;
+    font-weight: 300;
+}
+.room-wrapper .list .bt-ghost {
+    border: 1px solid #fff;
+}
+.room-wrapper .desc-wrapper .moving-stage {
+    overflow: hidden;
+}
+.room-wrapper .desc-wrapper .moving-box {
+    transition: all 0.35s;
+    transform: translateY(100%);
+}
+.room-wrapper .desc-wrapper .moving-box.active {
+    transform: translateY(0);
 }
 /**********************svc-wrapper  *********************/
 
