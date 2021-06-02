@@ -238,6 +238,13 @@ $(function () {
     }
 
     function slideRoom() {
+        /*
+        1. 클릭하면 다음 슬라이드로 slideChange(현재 활성 슬라이드 변경 후 이벤트 실행)
+        2. desc 내려간다  onBefore(이벤트) / onBefore은 active 클래스를 제거한다.  (active가 활성화되면 moving-box=desc를 올라오게 한다) 
+        즉 {transform:translate(100%)}가 되어 desc 내려오게 된다.
+        3. 그리고 바로 다음 슬라이드 올라오면 slideChangeTransitionEnd 다른 슬라이드로 애니메이션 후 이벤트 실행
+        4. 다음 슬라이드에 해당하는 desc 올라온다 onAfter(이벤트)active 클래스를 추가 =>{transform:translate(0%)}되어 moving-box 위로 올라오게 됨
+        */
         var room = [], //room은 json에서 가져온 "room";[]배열
             swiper; //swiper도 지역변수 선언
         var $movingBox = $('.room-wrapper .desc-wrapper .moving-box');
@@ -253,12 +260,12 @@ $(function () {
         swiper = getSwiper('.room-wrapper', { break: 2, speed: 600 });
         swiper.on('slideChange', onBefore); //slideChange는 swiper.API의 키워드다.
         //slideChange: 현재 활성 슬라이드가 변경되면 이벤트가 시작된다
-        swiper.on('slideChangeTransitionEnd', onChange); //slideChangeTransitionEnd:다른 슬라이드 (다음 또는 이전)로 애니메이션 후 이벤트가 시작됩니다.
+        swiper.on('slideChangeTransitionEnd', onAfter); //slideChangeTransitionEnd:다른 슬라이드 (다음 또는 이전)로 애니메이션 후 이벤트가 시작됩니다.
 
         function onBefore(e) {
-            $movingBox.removeClass('active');
+            $movingBox.removeClass('active'); //css에서 active는 translateY(0)-아예 밑으로 사라짐
         }
-        function onChange(e) {
+        function onAfter(e) {
             var idx = e.realIndex;
             showDesc(idx);
         }
@@ -274,12 +281,12 @@ $(function () {
 
     function slideSvc() {
         var $slideWrapper = $('.svc-wrapper .slide-wrapper');
-        var swiper;
-
+        var swiper, lastIdx;
         function onGetData(r) {
+            lastIdx = r.svc.length - 1;
             r.svc.forEach(function (v, i) {
                 var html = '';
-                html += '<li class="slide swiper-slide">';
+                html += '<li class="slide swiper-slide" title="' + i + '">';
                 html += '<div class="img-wrap">';
                 html += '<img src="' + v.src + '" alt="svc" class="w-100">';
                 html += '</div>';
@@ -288,6 +295,16 @@ $(function () {
                 $slideWrapper.append(html);
             });
             swiper = getSwiper('.svc-wrapper', { break: 2, speed: 600 });
+            swiper.on('slideChange', onChange);
+            showAni(0);
+        }
+        function onChange(e) {
+            console.log(e.realIndex);
+            showAni(e.realIndex == lastIdx ? 0 : e.realIndex + 1);
+        }
+        function showAni(n) {
+            $slideWrapper.find('.slide').removeClass('active');
+            $slideWrapper.find('.slide[title="' + n + '"]').addClass('active');
         }
         $.get('../json/svc.json', onGetData);
     }
