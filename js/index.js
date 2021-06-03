@@ -20,6 +20,7 @@ $(function () {
     initStyle();
     slideRoom();
     slideSvc();
+    slideSns();
 
     function setCookie() {
         //쿠키
@@ -294,7 +295,7 @@ $(function () {
                 html += '</li>';
                 $slideWrapper.append(html);
             });
-            swiper = getSwiper('.svc-wrapper', { break: 2, speed: 600 });
+            swiper = getSwiper('.svc-wrapper', { break: 2, speed: 600, pager: false });
             swiper.on('slideChange', onChange);
             showAni(0);
         }
@@ -307,5 +308,22 @@ $(function () {
             $slideWrapper.find('.slide[title="' + n + '"]').addClass('active');
         }
         $.get('../json/svc.json', onGetData);
+    }
+
+    function slideSns() {
+        var $slideWrapper = $('.sns-wrapper .slide-wrapper');
+        var swiper;
+        function onGetData(r) {
+            r.sns.forEach(function (v, i) {
+                var html = '';
+                html += '<li class="slide swiper-slide">';
+                html += '<img src="' + v.src + '" alt="이벤트" class="w-100">';
+                html += '<i class="icon fab fa-instagram"></i>';
+                html += '</li>';
+                $slideWrapper.append(html);
+            });
+            swiper = getSwiper('.sns-wrapper', { break: 7, pager: false, space: 0 });
+        }
+        $.get('../json/sns.json', onGetData);
     }
 });

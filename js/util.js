@@ -63,6 +63,13 @@ function getSwiper(el, opt) {
             992: { slidesPerView: 4 },
             1200: { slidesPerView: 5 },
         };
+    } else if (opt.break > 5) {
+        breakpoints = {
+            576: { slidesPerView: opt.break - 3 },
+            768: { slidesPerView: opt.break - 2 },
+            992: { slidesPerView: opt.break - 1 },
+            1200: { slidesPerView: opt.break },
+        };
     }
 
     var swiper = new Swiper(el + ' .swiper-container', {
@@ -71,8 +78,8 @@ function getSwiper(el, opt) {
         autoplay: autoplay,
         loop: opt.loop === false ? false : true,
         speen: opt.speed || 500,
-        slidesPerView: 1,
-        spaceBetween: opt.space || 40,
+        slidesPerView: opt.break && opt.break > 5 ? 3 : 1,
+        spaceBetween: opt.space === undefined ? 40 : opt.space,
         breakpoints: breakpoints,
     });
 
