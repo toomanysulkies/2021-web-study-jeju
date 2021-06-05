@@ -654,7 +654,8 @@
 .sns-wrapper .sns-weixin:hover > .qr-wrap {
     display: block;
 }
-/**********************contact-wrapper  *********************/
+/**********************contact-wrapper  
+*********************/
 .contact-wrapper {
     text-align: left;
 }
@@ -706,8 +707,29 @@
 .contact-wrapper .mail-wrap {
     flex: 80% 0 0;
 }
-.contact-wrapper .mail-wrapper .title-wrap {
+
+.contact-wrapper .mail-form {
+    display: flex;
 }
+.contact-wrapper .mail-form .mail-input {
+    flex-grow: 1;
+    border: 1px solid #bbb;
+    padding: 0 1em;
+}
+.contact-wrapper .mail-form .mail-input::placeholder {
+    color: #bbb;
+    font-size: 1.25em;
+}
+.contact-wrapper .mail-form .mail-input:focus {
+    border: 1px solid #b38859;
+}
+.contact-wrapper .mail-form .mail-send {
+    flex-shrink: 0;
+    background-color: #bbb;
+    color: #fff;
+    padding: 1.5em 2.5em;
+}
+
 /**********************cookie-wrapper  *********************/
 .cookie-wrapper {
     z-index: 100;
