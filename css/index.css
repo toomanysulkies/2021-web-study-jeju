@@ -730,17 +730,17 @@ section.sns-wrapper {
     background-color: #333;
     color: #fff;
     padding: 1.5em 2.5em;
-    transition:  all .5s;
+    transition: all 0.5s;
 }
-.contact-wrapper .mail-form .mail-send:disabled{
-     background-color: #bbb;
+.contact-wrapper .mail-form .mail-send:disabled {
+    background-color: #bbb;
 }
 .contact-wrapper .mail-form .valid-alert {
     margin: 1em 0;
     padding: 0.75em 1em;
     background-color: #eb7e34;
     color: #fff;
-    display:none;
+    display: none;
     border-radius: 4px;
     position: relative;
 }
@@ -757,8 +757,12 @@ section.sns-wrapper {
     top: -10px;
     left: 10%;
 }
-.contact-wrapper .mail-form .valid-alert.active{ display: inline-block;} 
-.contact-wrapper .mail-form .form-check { margin-top: 1em;}
+.contact-wrapper .mail-form .valid-alert.active {
+    display: inline-block;
+}
+.contact-wrapper .mail-form .form-check {
+    margin-top: 1em;
+}
 .contact-wrapper .mail-form .agree-mail {
     margin-top: 0;
 }

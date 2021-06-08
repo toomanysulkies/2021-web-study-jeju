@@ -301,7 +301,6 @@ $(function () {
             showAni(0);
         }
         function onChange(e) {
-            console.log(e.realIndex);
             showAni(e.realIndex == lastIdx ? 0 : e.realIndex + 1);
         }
         function showAni(n) {
@@ -330,33 +329,52 @@ $(function () {
     function initContact() {
         /******************Global******************/
         var emailChk = false; //이메일 검증을 통과했는가?
-        var agreeChk = false; //이용 약관을 동의했는가? 
-        var $form= $('.contact-wrapper .mail-form')
-        var $input= $('.contact-wrapper .mail-input')
-        var $send = $('.contact-wrapper .mail-send')
-        var $alert = $('.contact-wrapper .valid-alert')
-        var $check = $('.contact-wrapper .agree-mail')
-        
+        var agreeChk = false; //이용 약관을 동의했는가?
+        var $form = $('.contact-wrapper .mail-form'); //mail-form은  form-input과 form-check의 부모
+        var $input = $('.contact-wrapper .mail-input'); //form-input의 자식 - 이메일 입력창
+        var $button = $('.contact-wrapper .mail-send'); //form-input의 자식 - 이메일 전송 버튼
+        var $alert = $('.contact-wrapper .valid-alert'); //form-check의 자식 -이메일 오류 경고창
+        var $check = $('.contact-wrapper .agree-mail'); //form-check의 자식 - 이용약관동의
+
         /******************Event Init******************/
-        $input.blur(onBlur)
-        $check.change(onChange)
+        $input.blur(onBlur); // 이메일 입력 이후 경고창 활성화/비활성화 함수
+        $check.change(onChange);
 
         /******************Event Callback******************/
         function onBlur() {
-            var email = $(this).val().trim();
+            //경고창 함수
+            var email = $(this).val().trim(); //변수 email은 지금 value의 공백이 제거된 것
             if (validEmail(email)) {
-                emailChk = true;
-                $alert.removeClass('active')
+                //만약 현재 입력된 이메일의 공백이 제거된 것이 이메일 정규식과 매치된다면,
+                emailChk = true; //이메일 체크 통과
+                $alert.removeClass('active'); //경고창은 비활성화
+            } else {
+                /*validEmail은 이메일 정규식과 value가 매치된 것이면 true
+                 */
+                emailChk = false; //아니라면 이메일체크 실패
+                $alert.addClass('active'); //경고창 활성화
             }
-            else {
-                emailChk = false;
-                $alert.addClass('active')
-            }
+            changeButton(); //버튼 활성화 함수
         }
         function onChange() {
-            console.log( $(this).is(':checked'));
+            agreeChk = $(this).is(':checked'); //이 체크박스가 체크되면 약관 동의
+            changeButto;
+            n(); //버튼 활성화 함수
+        }
+        function onSubmit() {}
+        function changeButton() {
+            if (emailChk && agreeChk) {
+                // 만약 이메일체크와 약관동의 체크 둘 다 통과라면,
+                $button.addClass('active'); //전송 버튼의 효과 활성화
+                $button.attr('disabled', false); //버튼 속성의 disabled 비활성화
+            } else {
+                //위와 반대
+                $button.removeClass('active');
+                $button.attr('disabled', true);
+            }
         }
         /******************User Function******************/
+        emailjs.init('user_qy9VVDk0BDS9SmFEEMW4h');
         /******************Global******************/
     }
 });
