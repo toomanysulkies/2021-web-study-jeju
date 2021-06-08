@@ -13,6 +13,7 @@ var phoneRegExp = /^\d{2,3}-\d{3,4}-\d{4}$/;
 
 function validEmail(v) {
     return v.match(emailRegExp) !== null ? true : false;
+   //emailRegExp가 null이 아니라면? true를 반환하고 null이라면 false 반환
 }
 
 function validPass(v) {
