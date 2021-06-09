@@ -339,8 +339,10 @@ $(function () {
         /******************Event Init******************/
         $input.blur(onBlur); // 이메일 입력 이후 경고창 활성화/비활성화 함수
         $check.change(onChange);
+        $form.submit(onSubmit);
 
         /******************Event Callback******************/
+
         function onBlur() {
             //경고창 함수
             var email = $(this).val().trim(); //변수 email은 지금 value의 공백이 제거된 것
@@ -349,19 +351,32 @@ $(function () {
                 emailChk = true; //이메일 체크 통과
                 $alert.removeClass('active'); //경고창은 비활성화
             } else {
-                /*validEmail은 이메일 정규식과 value가 매치된 것이면 true
-                 */
+                /*validEmail은 이메일 정규식과 value가 매치된 것이면 true   */
                 emailChk = false; //아니라면 이메일체크 실패
                 $alert.addClass('active'); //경고창 활성화
             }
             changeButton(); //버튼 활성화 함수
         }
+
         function onChange() {
             agreeChk = $(this).is(':checked'); //이 체크박스가 체크되면 약관 동의
-            changeButto;
-            n(); //버튼 활성화 함수
+            changeButton(); //버튼 활성화 함수
         }
-        function onSubmit() {}
+
+        function onSubmit(e) {
+            e.preventDefault(); // submit이므로 전송되어야 하는데 전송기능을 막는다.
+            $form[0].contact_number.value = (Math.random() * 100000) | 0;
+            emailjs.sendForm('service_gmail', 'template_gmail', this).then(
+                function () {
+                    console.log('SUCCESS!');
+                },
+                function (error) {
+                    console.log('FAILED...', error);
+                }
+            );
+            return false;
+        }
+
         function changeButton() {
             if (emailChk && agreeChk) {
                 // 만약 이메일체크와 약관동의 체크 둘 다 통과라면,
