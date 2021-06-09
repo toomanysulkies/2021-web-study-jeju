@@ -333,7 +333,7 @@ $(function () {
         var $form = $('.contact-wrapper .mail-form'); //mail-form은  form-input과 form-check의 부모
         var $input = $('.contact-wrapper .mail-input'); //form-input의 자식 - 이메일 입력창
         var $button = $('.contact-wrapper .mail-send'); //form-input의 자식 - 이메일 전송 버튼
-        var $alert = $('.contact-wrapper .valid-alert'); //form-check의 자식 -이메일 오류 경고창
+        var $alert = $('.contact-wrapper .valid-alert'); //-이메일 오류 경고창
         var $check = $('.contact-wrapper .agree-mail'); //form-check의 자식 - 이용약관동의
 
         /******************Event Init******************/
@@ -355,12 +355,14 @@ $(function () {
                 emailChk = false; //아니라면 이메일체크 실패
                 $alert.addClass('active'); //경고창 활성화
             }
-            changeButton(); //버튼 활성화 함수
+            $button.attr('disabled', emailChk && agreeChk ? false : true); //버튼 활성화 함수
+            /*이메일 체크와 약관동의가 모두 true면 false가 되어 disabled 됨(효과 비활성화)(disabled되면 비활성화 된 것처럼 보임)
+             */
         }
 
         function onChange() {
             agreeChk = $(this).is(':checked'); //이 체크박스가 체크되면 약관 동의
-            changeButton(); //버튼 활성화 함수
+            $button.attr('disabled', emailChk && agreeChk ? false : true); //버튼 활성화 함수
         }
 
         function onSubmit(e) {
@@ -368,26 +370,19 @@ $(function () {
             $form[0].contact_number.value = (Math.random() * 100000) | 0;
             emailjs.sendForm('service_gmail', 'template_gmail', this).then(
                 function () {
-                    console.log('SUCCESS!');
+                    alert('뉴스레터 신청이 완료되었습니다.');
+                    $form[0].reset();
+                    $button.attr('disabled', false);
+                    agreeChk = false;
+                    emailChk = false;
                 },
                 function (error) {
-                    console.log('FAILED...', error);
+                    alert('뉴스레터 신청 오류! \n관리자에게 문의하세요.');
                 }
             );
             return false;
         }
 
-        function changeButton() {
-            if (emailChk && agreeChk) {
-                // 만약 이메일체크와 약관동의 체크 둘 다 통과라면,
-                $button.addClass('active'); //전송 버튼의 효과 활성화
-                $button.attr('disabled', false); //버튼 속성의 disabled 비활성화
-            } else {
-                //위와 반대
-                $button.removeClass('active');
-                $button.attr('disabled', true);
-            }
-        }
         /******************User Function******************/
         emailjs.init('user_qy9VVDk0BDS9SmFEEMW4h');
         /******************Global******************/

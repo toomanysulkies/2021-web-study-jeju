@@ -76,7 +76,7 @@ $(function () {
 
     /*************** 이벤트 콜백 *****************/
     function onMovingTop() {
-        $('html, body').stop().animate({ scrollTop: 0 }, 10);
+        $('html, body').stop().animate({ scrollTop: 0 }, 300);
     }
 
     function onNaviEnter() {
