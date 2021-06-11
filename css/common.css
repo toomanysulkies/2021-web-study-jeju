@@ -2,7 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&display=swap');
 /* font-family: 'Noto Sans KR', sans-serif; */
 /* font-family: 'Jost', sans-serif; */
-
 /********************** 글로벌 설정 *********************/
 html,
 body {
@@ -96,27 +95,7 @@ body {
     transform: translateY(-0.25em);
 }
 
-/*********** pager ************/
-.pager-wrapper .pager {
-    border: 1px solid #fff;
-    border-radius: 50%;
-    background-color: #ccc;
-    width: 14px;
-    height: 14px;
-    margin: 0 4px;
-    cursor: pointer;
-    display: inline-block;
-    transition: all 0.5s;
-    transform: scale(0.6);
-    opacity: 1;
-}
-.pager-wrapper .pager.active {
-    border: 1px solid #fff;
-    background-color: transparent;
-    transform: scale(1);
-    opacity: 1;
-}
-
+/*********** slick-pager ************/
 .slick-dots li button {
     display: none;
 }
