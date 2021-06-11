@@ -7,7 +7,7 @@
 // verticalSwiping: true, // vertical mode에서 touch 지원여부
 // cssEase: 'linear', // animation easing
 
-$('.slick-wrapper').slick({
+$('.slide-wrapper').slick({
     // variableWidth: true, // 슬라이드의 크기가 다를경우
     // adaptiveHeight: true // 슬라이드의 높이가 제각각일 경우
     centerMode: true, // 슬라이드의 선택된 슬라이드가 중앙으로 배치
