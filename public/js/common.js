@@ -2,12 +2,15 @@
 /* (function(){
 	alert('hi')
 })()
+
 window.onload = function() {
 	alert('hi2')
 }
+
 $(document).ready(function(){
 	alert('hi3')
 })
+
 $(function(){
 	alert('hi4')
 }) */
@@ -34,7 +37,7 @@ $(function () {
         if (scTop == 0) {
             if ($.cookie('hideNotice') !== 'Y') $notice.show();
             $link.show();
-            $header.css('top', 'unset');
+            $header.css('top', 'auto');
             $header.removeClass('active');
         } else {
             /* else if(scTop < 150) {
@@ -51,7 +54,9 @@ $(function () {
             $header.css('top', 0);
             $header.addClass('active');
         }
+        if (isMobile) $header.addClass('active');
     }
+
     function movingTop(scTop) {
         if (scTop === 0) $('.bt-moving-top').removeClass('active');
         else $('.bt-moving-top').addClass('active');
@@ -72,10 +77,20 @@ $(function () {
     $('.header-wrapper .link-lang').mouseenter(onShowLang);
     $('.header-wrapper .link-lang').mouseleave(onHideLang);
     $('.header-wrapper .link-lang .lang').click(onChgLang);
+
     $('.bt-moving-top').click(onMovingTop);
+    $('.bt-moving-top2').click(onMovingTop);
+
+    $('.mo-link-wrapper .mo-lang').click(onChgLangMobile);
 
     /*************** 이벤트 콜백 *****************/
-    function onMovingTop() {
+    function onChgLangMobile(e) {
+        e.preventDefault();
+        if ($(this).text() === 'KR') $(this).text('EN');
+        else $(this).text('KR');
+    }
+    function onMovingTop(e) {
+        e.preventDefault();
         $('html, body').stop().animate({ scrollTop: 0 }, 300);
     }
 
@@ -119,15 +134,15 @@ $(function () {
     }
 
     function onToggleLang() {
-        $('.header-wrapper .link-lang .hover-lang').toggle();
+        $('.header-wrapper .link-lang .hover').toggle();
     }
 
     function onShowLang() {
-        $('.header-wrapper .link-lang .hover-lang').show();
+        $('.header-wrapper .link-lang .hover').show();
     }
 
     function onHideLang() {
-        $('.header-wrapper .link-lang .hover-lang').hide();
+        $('.header-wrapper .link-lang .hover').hide();
     }
 
     function onChgLang() {

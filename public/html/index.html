@@ -9,41 +9,46 @@
 	<link rel="stylesheet" href="../css/all.min.css">
 	<link rel="stylesheet" href="../css/bootstrap-icons.css">
 	<link rel="stylesheet" href="../css/bootstrap.min.css">
-	<link rel="stylesheet" href="../css/swiper-bundle.min.css">
 	<link rel="stylesheet" href="../css/animate.compat.css">
+	<!-- <link rel="stylesheet" href="../css/swiper-bundle.min.css"> -->
+	<link rel="stylesheet" href="../css/slick.css">
+	<link rel="stylesheet" href="../css/slick-theme.css">
 	<link rel="stylesheet" href="../css/base.css">
 	<link rel="stylesheet" href="../css/common.css">
 	<link rel="stylesheet" href="../css/index.css">
 	<script src="../js/jquery-3.5.1.min.js"></script>
-	<script src="../js/jquery.cookie.js"></script>
-	<script src="../js/swiper-bundle.min.js"></script>
+	<!-- <script src="../js/swiper-bundle.min.js"></script> -->
 	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/jquery.cookie.js"></script>
 	<script src="../js/moment.min.js"></script>
 	<script src="../js/email.min.js"></script>
+	<script src="../js/slick.min.js"></script>
 	<script src="../js/util.js"></script>
 </head>
 
 <body>
 	<div class="wrapper-all">
-		<!-- notice-wrapper -->
+		<!-- header-wrapper common -->
 		<header class="notice-wrapper">
 			<div class="notice-wrap wrapper">
 				<h2 class="notice-bullet">공지</h2>
 				<h3 class="notice-title">위생관련 공지사항</h3>
-				<i class="bt-hide bi bi-chevron-up"></i>
-				<i class="bt-show bi bi-chevron-down"></i>
+				<i class="bt-show bi-chevron-down"></i>
+				<i class="bt-hide bi-chevron-up"></i>
 				<i class="bt-close bi-x"></i>
 			</div>
 			<div class="notice-content wrapper">
-				<p class="content">제주드림타워 복합리조트는 모든 고객의 안전을 최우선으로 생각합니다. 여러분의 위생과 안전을 위하여 모든 시설 내 마스크 착용은 필수입니다.<br>
-					강화된 위생 조치는 아래 안전과 웰빙 정책 페이지에서 확인하실 수 있습니다.</p>
+				<p class="content">
+					제주드림타워 복합리조트는 모든 고객의 안전을 최우선으로 생각합니다. 여러분의 위생과 안전을 위하여 모든 시설 내 마스크 착용은 필수입니다.
+					<br>
+					강화된 위생 조치는 아래 안전과 웰빙 정책 페이지에서 확인하실 수 있습니다.
+				</p>
 				<div class="bt-wrap">
-					<button class="bt-ghost bt-more">READ MORE</button>
+					<button class="bt-more bt-ghost">READ MORE</button>
 					<button class="bt-today bt-anchor">오늘 다시 보지 않기</button>
 				</div>
 			</div>
 		</header>
-		<!-- header-wrapper common -->
 		<header class="header-wrapper wrapper-all">
 			<div class="link-wrapper">
 				<div class="wrapper">
@@ -52,8 +57,10 @@
 						<li class="link"><a href="#">About Us</a></li>
 						<li class="link"><a href="#">오시는 길</a></li>
 						<li class="link link-lang">
-							<div class="sel-lang"><span>한국어</span> <i class="bt-lang bi-chevron-down"></i></div>
-							<div class="hover-lang">
+							<div class="sel">
+								<span>한국어</span> <i class="bt-lang bi-chevron-down"></i>
+							</div>
+							<div class="hover">
 								<div class="lang">English</div>
 								<div class="lang">Japanese</div>
 							</div>
@@ -61,34 +68,36 @@
 					</ul>
 				</div>
 			</div>
-			<div class="navi-wrapper">
+			<nav class="navi-wrapper">
 				<div class="wrapper">
 					<h1 class="logo-wrap">
 						<a class="logo">
-							<img class="logo-white mw-100" src="../img/common/logo-white.png" alt="로고">
-							<img class="logo-color mw-100" src="../img/common/logo-color.png" alt="로고">
+							<img src="../img/common/logo-white.png" alt="로고" class="logo-white mw-100">
+							<img src="../img/common/logo-color.png" alt="로고" class="logo-color mw-100">
 						</a>
 					</h1>
 					<ul class="navi-wrap navi-wrap-lt">
-						<li class="navi"><a href="#">OFFERS</a></li>
-						<li class="navi has-sub"><a href="#">STAY</a>
-							<div></div>
+						<li class="navi">
+							<a href="#">OFFERS</a>
+						</li>
+						<li class="navi has-sub">
+							<a href="#">STAY</a>
 							<ul class="sub-wrapper stay">
 								<li class="sub-wrap">
 									<h3 class="title"><a href="#">OVERVIEW</a></h3>
 									<ul class="list-wrap">
 										<li class="lists">
 											<h4 class="title"><a href="#">객실</a></h4>
-											<div class="list"><a href="#">65㎡ 킹 룸</a></div>
-											<div class="list"><a href="#">65㎡ 트윈 룸</a></div>
+											<div class="list"><a href="#">65m² 킹 룸</a></div>
+											<div class="list"><a href="#">65m² 트윈 룸</a></div>
 										</li>
 										<li class="lists">
 											<h4 class="title"><a href="#">스위트</a></h4>
-											<div class="list"><a href="#">130㎡ 그랜드 스위트</a></div>
-											<div class="list"><a href="#">130㎡ 프리미어 스위트</a></div>
-											<div class="list"><a href="#">130㎡ 코너스위트</a></div>
-											<div class="list"><a href="#">195㎡ 디플로매틱 스위트</a></div>
-											<div class="list"><a href="#">260㎡ 프레지덴셜 스위트</a></div>
+											<div class="list"><a href="#">130m² 그랜드 스위트</a></div>
+											<div class="list"><a href="#">130m² 프리미어 스위트</a></div>
+											<div class="list"><a href="#">130m² 코너 스위트</a></div>
+											<div class="list"><a href="#">195m² 디플로매틱 스위트</a></div>
+											<div class="list"><a href="#">260m² 프레지덴셜 스위트</a></div>
 										</li>
 									</ul>
 									<h3 class="title"><a href="#">시설 안내</a></h3>
@@ -96,7 +105,8 @@
 								</li>
 							</ul>
 						</li>
-						<li class="navi has-sub"><a href="#">WINE & DINE</a>
+						<li class="navi has-sub">
+							<a href="#">WINE & DINE</a>
 							<ul class="sub-wrapper wine">
 								<li class="sub-wrap">
 									<h3 class="title"><a href="#">OVERVIEW</a></h3>
@@ -122,20 +132,21 @@
 											<div class="list"><a href="#">그랜드 키친</a></div>
 											<div class="list"><a href="#">카페 8 & 테라스</a></div>
 											<div class="list"><a href="#">스테이크 하우스</a></div>
+										</li>
 										<li class="lists">
 											<h4 class="title"><a href="#">카페 & 바</a></h4>
 											<div class="list"><a href="#">갤러리 라운지</a></div>
 											<div class="list"><a href="#">델리</a></div>
 											<div class="list"><a href="#">라운지 38</a></div>
 										</li>
+									</ul>
 								</li>
 							</ul>
 						</li>
 					</ul>
-					</li>
-					</ul>
 					<ul class="navi-wrap navi-wrap-rt">
-						<li class="navi has-sub"><a href="#">THINGS TO DO</a>
+						<li class="navi has-sub">
+							<a href="#">THINGS TO DO</a>
 							<ul class="sub-wrapper things">
 								<li class="sub-wrap">
 									<h3 class="title"><a href="#">WHAT'S ON NOW</a></h3>
@@ -143,8 +154,6 @@
 										<li class="lists">
 											<h4 class="title"><a href="#">여행 일정</a></h4>
 											<div class="list"><a href="#">내 여행 일정</a></div>
-											<div class="list"></div>
-											<div class="list"></div>
 										</li>
 										<li class="lists">
 											<h4 class="title"><a href="#">웰니스</a></h4>
@@ -160,29 +169,38 @@
 									<h3 class="title"><a href="#">제주관광 안내</a></h3>
 								</li>
 							</ul>
-
 						</li>
-						<li class="navi"><button class="bt-book bt-ghost gold">BOOK NOW</button></li>
+						<li class="navi navi-book">
+							<button class="bt-book bt-ghost gold">BOOK NOW</button>
+						</li>
 					</ul>
 				</div>
-			</div>
-
-
+			</nav>
 		</header>
+		<header class="mo-link-wrapper">
+			<a href="#" class="bi-box-arrow-in-right"></a>
+			<a href="#" class="bi-info-circle"></a>
+			<a href="#" class="bt-moving-top2"><i class="bi-chevron-up"></i>TOP</a>
+			<a href="#" class="bi-geo-alt"></a>
+			<a href="#" class="mo-lang">KR</a>
+		</header>
+
 		<!-- main-wrapper -->
 		<div class="main-wrapper">
 			<div class="slide-stage wrapper-all">
 				<div class="slide-wrap">
 					<div class="slide is-video">
-						<video class="video" alt="메인배너" muted>
+						<video class="video" alt="메인배너" poster="../img/index/main-poster.png" muted>
 							<source src="../img/index/main01.mp4">
 						</video>
 						<div class="slide-body">
 							<div class="ani-stage">
-								<h2 class="slide-title">WELCOME TO <br>JEJU DREAM TOWER</h2>
+								<h2 class="slide-title">
+									WELCOME TO<br>JEJU DREAM TOWER
+								</h2>
 							</div>
 							<div class="ani-stage">
-								<p class="bt-video silde-desc">
+								<p class="bt-video slide-desc">
 									<i class="far fa-play-circle"></i> 영상보기
 								</p>
 							</div>
@@ -192,41 +210,42 @@
 						<img src="../img/index/main02.jpg" alt="메인배너">
 						<div class="slide-body">
 							<div class="ani-stage">
-								<h2 class="slide-title">MODERN KOREAN STYLE</h2>
+								<h2 class="slide-title">
+									MODERN KOREAN LIFESTYLE
+								</h2>
 							</div>
 							<div class="ani-stage">
-								<p class="silde-desc">
-									<button class="bt-more bt-ghost angle">자세히 보기 </button>
+								<p class="slide-desc">
+									<button class="bt-more bt-ghost angle">자세히보기</button>
 								</p>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="pager-wrapper pager-slide">
-				</div>
+				<div class="pager-wrapper pager-slide"></div>
 			</div>
 			<div class="info-stage">
 				<ul class="info-wrap">
 					<li class="info">
 						<div>
-							<img class="icon mw-100" src="../img/index/ico_hotel.png" alt="icon">
+							<img src="../img/index/ico_hotel.png" alt="icon" class="icon mw-100">
 							<span class="cnt">1600</span>
 						</div>
 						<h3>ROOMS & SUITES</h3>
 					</li>
 					<li class="info">
 						<div>
-							<img class="icon mw-100" src="../img/index/ico_dine.png" alt="icon">
+							<img src="../img/index/ico_dine.png" alt="icon" class="icon mw-100">
 							<span class="cnt">14</span>
 						</div>
 						<h3>RESTAURANTS & BARS</h3>
 					</li>
 					<li class="info">
 						<div>
-							<img class="icon mw-100" src="../img/index/ico_dress.png" alt="icon">
+							<img src="../img/index/ico_dress.png" alt="icon" class="icon mw-100">
 							<span class="cnt">200</span>
 						</div>
-						<h3>KOREAN DESIGNERS</h3>
+						<h3>TOP KOREAN DESIGNERS</h3>
 					</li>
 					<li class="weather">
 						<div>
@@ -234,17 +253,15 @@
 							<span class="temp"></span>
 							<sup>o</sup>C
 						</div>
-
-						<div class="date"></div>
-						<div class="time"><span></span><small></small></div>
-
+						<div>
+							<div class="date"></div>
+							<div class="time"><span>10:42</span> <small>AM</small></div>
+						</div>
 					</li>
 				</ul>
 			</div>
-
-
-
 		</div>
+
 		<!-- dream-wrapper -->
 		<section class="dream-wrapper">
 			<div class="wrapper">
@@ -253,8 +270,8 @@
 					<h4 class="title">당신이 꿈꾸는 여행의 모든 것 - 제주 드림타워가 특별히 준비한 추천 상품을 확인 해 보세요.</h4>
 				</div>
 				<div class="slide-stage">
-					<div class="swiper-container">
-						<ul class="slide-wrapper swiper-wrapper">
+					<div class="slide-container">
+						<ul class="slide-wrapper">
 							<li class="slide swiper-slide">
 								<div class="img-wrap ratio-wrap" data-ratio="0.75">
 									<div class="ratio-bg" style="background-image: url(../img/index/3211.png);"></div>
@@ -269,7 +286,6 @@
 								<div class="img-wrap ratio-wrap" data-ratio="0.75">
 									<div class="ratio-bg" style="background-image: url(../img/index/3424.jpg);"></div>
 								</div>
-
 								<div class="cont-wrap">
 									<h3 class="title">스프링 BOGO 50% 할인</h3>
 									<div class="desc">지금 2박을 예약 하시면 셋째 날 요금의 50% 할인 혜택을 드립니다</div>
@@ -318,7 +334,7 @@
 							</li>
 						</ul>
 					</div>
-					<div class="pager-wrapper pager-slide"></div>
+					<!-- <div class="pager-wrapper pager-slide"></div> -->
 					<i class="bt-slide left bi-chevron-left"></i>
 					<i class="bt-slide right bi-chevron-right"></i>
 					<div class="box left"></div>
@@ -326,19 +342,17 @@
 				</div>
 				<div class="bt-wrap">
 					<button class="bt-ghost white">전체보기</button>
-
 				</div>
-
 			</div>
-
 		</section>
+
 		<!-- promo-wrapper -->
 		<section class="promo-wrapper">
 			<div class="wrapper">
 				<div class="slide-stage">
-					<div class="swiper-container">
-						<ul class="slide-wrapper swiper-wrapper">
-							<!--데이터가 들어가는 곳-->
+					<div class="slide-container">
+						<ul class="slide-wrapper">
+							<!-- 데이터가 들어가는곳 -->
 						</ul>
 					</div>
 					<i class="bt-slide left bi-chevron-left"></i>
@@ -348,8 +362,8 @@
 					<button class="bt-ghost white">전체보기</button>
 				</div>
 			</div>
-
 		</section>
+
 		<!-- style-wrapper -->
 		<section class="style-wrapper">
 			<div class="wrapper-lg">
@@ -359,65 +373,61 @@
 				</div>
 				<div class="list-wrap">
 					<div class="list ratio-wrap" data-ratio="1">
-						<div class="ratio-bg" style="background-image: url(../img/index/ent01.jpg);">
-							<div class="hover-bg"></div>
-							<div class="hover-cont">
-								<h3 class="title">14 레스토랑과 바</h3>
-								<div class="bar"></div>
-								<div class="content moving-stage">
-									<div class="moving-box">각국의 영감이 깃든 정통 요리부터 편안하게 즐기는 캐주얼 스낵까지
-									</div>
+						<div class="ratio-bg" style="background-image: url(../img/index/ent01.jpg);"></div>
+						<div class="hover-bg"></div>
+						<div class="hover-cont">
+							<h3 class="title">14 레스토랑과 바</h3>
+							<div class="bar"></div>
+							<div class="content moving-stage">
+								<div class="moving-box">
+									각국의 영감이 깃든 정통 요리부터 편안하게 즐기는 캐주얼 스낵까지 아시아와 유럽 대륙을 넘나드는 미식의 세계
 								</div>
-								<div class="moving-stage">
-									<button class="bt-ghost moving-box">전체보기
-									</button>
-								</div>
+							</div>
+							<div class="moving-stage">
+								<button class="bt-ghost moving-box">전체보기</button>
 							</div>
 						</div>
 					</div>
-
 					<div class="list ratio-wrap" data-ratio="1">
-						<div class="ratio-bg" style="background-image: url(../img/index/ent03.jpg);">
-							<div class="hover-bg"></div>
-							<div class="hover-cont">
-								<h3 class="title">HAN 컬렉션</h3>
-								<div class="bar"></div>
-								<div class="content moving-stage">
-									<div class="moving-box">뉴욕 소호의 스타일리시함과 런던 하이 스트릿의 감성을 넘어 200여명의 K패션 디자이너들이 전해드리는 트랜디 패션 제안
-									</div>
-								</div>
-								<div class="moving-stage">
-									<button class="bt-ghost moving-box">전체보기</button>
+						<div class="ratio-bg" style="background-image: url(../img/index/ent03.jpg);"></div>
+						<div class="hover-bg"></div>
+						<div class="hover-cont">
+							<h3 class="title">HAN 컬렉션</h3>
+							<div class="bar"></div>
+							<div class="content moving-stage">
+								<div class="moving-box">
+									뉴욕 소호의 스타일리시함과 런던 하이 스트릿의 감성을 넘어 200여명의 K패션 디자이너들이 전해드리는 트렌디 패션 제안
 								</div>
 							</div>
-
+							<div class="moving-stage">
+								<button class="bt-ghost moving-box">전체보기</button>
+							</div>
 						</div>
 					</div>
-
 					<div class="list ratio-wrap" data-ratio="1">
-						<div class="ratio-bg" style="background-image: url(../img/index/ent02.jpg);">
-							<div class="hover-bg"></div>
-							<div class="hover-cont">
-								<h3 class="title">웰니스 소파</h3>
-								<div class="bar"></div>
-								<div class="content moving-stage">
-									<div class="moving-box">코리안 모던 찜질방과 유럽의 향기를 담은 스파에서 나른한 여유를 제주의 풍광을 담은 인피니티 풀에서 이국적인 낭만을
-									</div>
+						<div class="ratio-bg" style="background-image: url(../img/index/ent02.jpg);"></div>
+						<div class="hover-bg"></div>
+						<div class="hover-cont">
+							<h3 class="title">웰니스 스파</h3>
+							<div class="bar"></div>
+							<div class="content moving-stage">
+								<div class="moving-box">
+									코리안 모던 찜질방과 유럽의 향기를 담은 스파에서 나른한 여유를 제주의 풍광을 품은 인피니티 풀에서 이국적인 낭만을
 								</div>
-								<div class="bt-wrap moving-stage">
-									<div class="moving-box">
-										<button class="bt-ghost">찜질 스파</button>
-										<button class="bt-ghost">로즈베이 스파</button>
-										<button class="bt-ghost">포디엄 풀데크</button>
-									</div>
+							</div>
+							<div class="bt-wrap moving-stage">
+								<div class="moving-box">
+									<button class="bt-ghost">찜질 스파</button>
+									<button class="bt-ghost">로즈베이 스파</button>
+									<button class="bt-ghost">포디엄 풀데크</button>
 								</div>
 							</div>
 						</div>
 					</div>
-
 				</div>
 			</div>
 		</section>
+
 		<!-- room-wrapper -->
 		<section class="room-wrapper">
 			<div class="title-wrap">
@@ -426,12 +436,18 @@
 			<div class="slide-stage">
 				<div class="slide-bg">
 					<div class="wrapper-xl">
-						<div class="swiper-container">
-							<ul class="slide-wrapper swiper-wrapper">
-								<li class="slide swiper-slide">
+						<div class="slide-container">
+							<ul class="slide-wrapper">
+								<li class="slide">
 									<img src="../img/index/room01.jpg" alt="룸" class="w-100">
 								</li>
-								<li class="slide swiper-slide">
+								<li class="slide">
+									<img src="../img/index/room02.jpg" alt="룸" class="w-100">
+								</li>
+								<li class="slide">
+									<img src="../img/index/room01.jpg" alt="룸" class="w-100">
+								</li>
+								<li class="slide">
 									<img src="../img/index/room02.jpg" alt="룸" class="w-100">
 								</li>
 							</ul>
@@ -446,31 +462,32 @@
 								<div class="moving-box"></div>
 							</h3>
 							<div class="desc moving-stage">
-								<div class="moving-box">
-								</div>
+								<div class="moving-box"></div>
 							</div>
-							<div class="bt-wrap moving-stage"> <button class="bt-ghost moving-box">전체보기</button></div>
+							<div class="bt-wrap moving-stage">
+								<button class="bt-ghost moving-box">전체보기</button>
+							</div>
 						</div>
 					</div>
 				</div>
 				<div class="pager-wrapper pager-slide"></div>
 			</div>
 		</section>
-		<!-- service-wrapper -->
+
+		<!-- svc-wrapper -->
 		<section class="svc-wrapper">
 			<div class="title-wrap">
 				<h2 class="title">SERVICES & FACILITIES</h2>
 			</div>
 			<div class="title-wrap wrapper">
-				<h3 class="title text-left">LUXURY LIVING.</h3>
-				<h3 class="title text-left">ICONIC EXPERIENCES.</h3>
-				<h4 class="title text-left">제주 드림타워만의 진심을 담은 호스피탈리티를 경험해 보세요.</h4>
+				<h3 class="title">LUXURY LIVING<br>ICONIC EXPERIENCES.</h3>
+				<h4 class="title">제주 드림타워만의 진심을 담은 호스피탈리티를 경험해 보세요.</h4>
 			</div>
 			<div class="slide-stage wrapper-xl">
 				<div class="wrapper">
-					<div class="swiper-container">
-						<ul class="slide-wrapper swiper-wrapper">
-							<!--DATA-->
+					<div class="slide-container">
+						<ul class="slide-wrapper">
+							<!-- slide 삽입 -->
 						</ul>
 					</div>
 					<div class="box left"></div>
@@ -479,9 +496,8 @@
 				<i class="bt-slide left bi-chevron-left"></i>
 				<i class="bt-slide right bi-chevron-right"></i>
 			</div>
-
-
 		</section>
+
 		<!-- sns-wrapper -->
 		<section class="sns-wrapper">
 			<div class="title-wrap">
@@ -489,9 +505,9 @@
 			</div>
 			<div class="slide-stage wrapper-xl">
 				<div class="wrapper">
-					<div class=" swiper-container">
-						<ul class="slide-wrapper swiper-wrapper">
-							<!--slide data-->
+					<div class="slide-container">
+						<ul class="slide-wrapper">
+							<!-- slide import -->
 						</ul>
 					</div>
 					<div class="box left"></div>
@@ -500,70 +516,64 @@
 				<i class="bt-slide left bi-chevron-left"></i>
 				<i class="bt-slide right bi-chevron-right"></i>
 			</div>
-			<div class="slogan-wrapper">
-				<div class="desc-wrapper">
-					<div class="desc">
-						여러분의 즐거운 경험을 공유하세요. #JejuDreamTower
-					</div>
-					<div class="divide"></div>
-					<ul class="sns-wrap">
-						<i class="sns fab fa-facebook"></i>
-						<i class="sns fab fa-instagram"></i>
-						<i class="sns sns-naver"></i>
-						<i class="sns sns-kakao"></i>
-						<i class="sns fab fa-weibo"></i>
-						<i class="sns sns-weixin fab fa-weixin">
-							<div class="qr-wrap"><img src="../img/index/qr.png" alt="QR"></div>
-						</i>
-					</ul>
-				</div>
+			<div class="desc-wrapper wrapper-xl">
+				<div class="desc">여러분의 즐거운 경험을 공유하세요. #JejuDreamTower</div>
+				<div class="divide"></div>
+				<ul class="sns-wrap">
+					<i class="sns fab fa-facebook-f"></i>
+					<i class="sns fab fa-instagram"></i>
+					<i class="sns sns-naver"></i>
+					<i class="sns sns-kakao"></i>
+					<i class="sns fab fa-weibo"></i>
+					<i class="sns sns-weixin fab fa-weixin">
+						<div class="qr-wrap">
+							<img src="../img/index/qr.png" alt="QR">
+						</div>
+					</i>
+				</ul>
 			</div>
-
 		</section>
+
 		<!-- contact-wrapper -->
 		<section class="contact-wrapper">
 			<div class="wrapper">
-				<div class="letter-wrapper">
+				<!-- <div class="letter-wrapper">
 					<div class="title-wrap">
 						<div>
-							<h3 class="title">
-								뉴스레터를 구독하세요
-							</h3>
-							<h4 class="title">
-								최신 업데이트 밑 프로모션을 받아 보세요
-							</h4>
+							<h3 class="title">뉴스레터를 구독하세요</h3>
+							<h4 class="title">최신 업데이트 및 프로모션을 받아 보세요.</h4>
 						</div>
+					</div>
+				</div> -->
+				<div class="letter-wrapper">
+					<img src="../img/index/bg_news.jpg" alt="배경" class="w-100">
+					<div class="title-wrap">
+						<h3 class="title">뉴스레터를 구독하세요</h3>
+						<h4 class="title">최신 업데이트 및 프로모션을 받아 보세요.</h4>
 					</div>
 				</div>
 				<div class="mail-wrapper">
 					<div class="mail-wrap">
 						<div class="title-wrap">
 							<h3 class="title">KEEP IN TOUCH</h3>
-							<h4 class="title">업데이트 된 뉴스레터를 받아보세요</h4>
+							<h4 class="title">업데이트된 뉴스레터를 받아 보세요.</h4>
 						</div>
-						<form id="contact-form" class="mail-form">
+						<form class="mail-form" id="contact-form">
 							<input type="hidden" name="contact_number">
 							<div class="form-input">
 								<input type="text" class="mail-input" name="email" placeholder="example@example.com" required>
-								<button class="mail-send" disabled>
-									가입하기
-									<i class="bi-arrow-right"></i>
-								</button>
+								<button class="mail-send" disabled>가입하기 <i class="bi-arrow-right"></i></button>
 							</div>
 							<div class="valid-alert">
-								<i class="fa fa-info-circle">
-									이메일을 올바르게 입력해 주세요.
-								</i>
+								<i class="fa fa-info-circle"></i> 이메일을 올바르게 입력해 주세요.
 							</div>
 							<div class="form-check">
-								<input type="checkbox" class="agree-mail form-check-input" value="true"><label for="agreeMail">
-									개인정보 이용약관에 동의합니다.
-								</label>
+								<input type="checkbox" id="agreeMail" class="agree-mail form-check-input" value="hi">
+								<label for="agreeMail">개인정보 이용약관에 동의합니다.</label>
 							</div>
 						</form>
 					</div>
 				</div>
-
 			</div>
 		</section>
 
@@ -575,19 +585,17 @@
 						<img src="../img/common/logo-white.png" alt="로고" class="mw-100">
 					</h1>
 					<div class="info">
-						롯데관광개발㈜<br>
-						대표 : 김기병, 백현, 김한준 <br>
-						사업자 등록번호 : 101-81-10173
+						롯데관광개발㈜ <br>
+						대표 : 김기병, 백현, 김한준<br>
+						사업자 등록번호 : 101-81-10173<br>
 					</div>
 					<div class="copyright">
-						COPYRIGHT © 2020 Jeju Dream Tower.
+						COPYRIGHT © 2020 Jeju Dream Tower.<br>
 						All rights reserved.
 					</div>
 				</div>
 				<div>
-					<h2 class="title">
-						CONTACT US
-					</h2>
+					<h2 class="title">CONTACT US​</h2>
 					<div>
 						<i class="bi-telephone"></i>
 						<a href="tel:064-907-1234">064-907-1234</a>
@@ -605,38 +613,38 @@
 						제주특별자치도 제주시 노연로 12
 					</address>
 					<div class="sns-wrap">
-						<i class="sns fab fa-facebook"></i>
+						<i class="sns fab fa-facebook-f"></i>
 						<i class="sns fab fa-instagram"></i>
 						<i class="sns sns-naver"></i>
 						<i class="sns sns-kakao"></i>
 						<i class="sns fab fa-weibo"></i>
 						<i class="sns sns-weixin fab fa-weixin">
-							<div class="qr-wrap"><img src="../img/index/qr.png" alt="QR"></div>
+							<div class="qr-wrap">
+								<img src="../img/index/qr.png" alt="QR">
+							</div>
 						</i>
-					</div>
+					</div>​
 				</div>
 				<div>
-					<h2 class="title">
-						ABOUT US
-					</h2>
+					<h2 class="title">ABOUT US​</h2>
 					<div class="link-wrap">
 						<div>
-							<a href="">제주 드림타워</a>
-							<a href="">오시는 길</a>
+							<a href="#">제주 드림타워</a>
+							<a href="#">오시는 길</a>
 						</div>
 						<div>
-							<a href="">개인정보 처리방침</a>
-							<a href="">이용약관</a>
-							<a href="">인재채용</a>
-							<a href="">사이트 맵</a>
-							<a href="">갤러리</a>
+							<a href="#">개인정보처리방침</a>
+							<a href="#">이용약관</a>
+							<a href="#">인재채용</a>
+							<a href="#">사이트 맵</a>
+							<a href="#">갤러리</a>
 						</div>
 					</div>
 				</div>
-
-
 			</div>
 		</footer>
+
+
 
 		<!-- aside -->
 		<!-- cookie-wrapper -->
@@ -644,8 +652,7 @@
 			<div class="wrapper">
 				<div class="cont-wrap">
 					<p>
-						당사에서는 사용자들에 맞춰 사이트를 설정하고 사이트를 보다 원활하게 이용할 수 있도록 쿠키를 사용하고 있습니다.
-						이 사이트를 사용하면 쿠키 사용에 동의하게 됩니다.
+						당사에서는 사용자들에 맞춰 사이트를 설정하고 사이트를 보다 원활하게 이용할 수 있도록 쿠키를 사용하고 있습니다. 이 사이트를 사용하면 쿠키 사용에 동의하게 됩니다.
 						사용된 쿠키 및 쿠키 제거 방법에 대한 자세한 내용은 쿠키 정책 을 참조하십시오.
 					</p>
 					<i class="bt-close bi-x"></i>
@@ -655,6 +662,7 @@
 				</div>
 			</div>
 		</div>
+
 		<!-- modal-wrapper -->
 		<div class="modal-wrapper modal-video">
 			<div class="modal-stage">
@@ -666,21 +674,20 @@
 						<video src="../img/index/main01.mp4" muted autoplay loop></video>
 					</div>
 					<div class="modal-bottom">
-						<button class=" bt-ghost angle">ALL VIDEO</button>
+						<button class="bt-ghost angle">ALL VIDEO</button>
 					</div>
 				</div>
 			</div>
 		</div>
+
 		<!-- bt-moving-top -->
 		<button class="bt-moving-top">
-			<i class="bi-chevron-up"></i>TOP
+			<i class="bi-chevron-up"></i>
+			TOP
 		</button>
 	</div>
-
-
-	<script src="../js/index.js">
-	</script>
 	<script src="../js/common.js"></script>
+	<script src="../js/index.js"></script>
 </body>
 
 </html>
