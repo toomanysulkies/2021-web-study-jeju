@@ -451,16 +451,15 @@ body {
     border-radius: 6px 6px 0 0;
 }
 .mo-link-wrapper > a {
-    padding: 0.325em;
+    padding: 0.5em;
 }
 .mo-link-wrapper > a.bt-moving-top2 {
     display: flex;
     flex-direction: column;
     align-items: center;
     font-size: 0.75em;
-    background-color: tomato;
     margin: 0 0.75em;
-    padding: 0.325em 0.5em;
+    padding: 0.5em 0.75em;
 }
 .mo-link-wrapper > a.bt-moving-top2 > i {
     margin-bottom: -2px;
@@ -618,22 +617,22 @@ body {
 /********************** 반응형 설정 *********************/
 @media (max-width: 1799px) {
     .wrapper-xl {
-        width: calc(100% - 2rem);
-        margin: 0 1rem;
+        width: calc(100% - 1rem);
+        margin: 0 0.5rem;
     }
 }
 
 @media (max-width: 1599px) {
     .wrapper-lg {
-        width: calc(100% - 2rem);
-        margin: 0 1rem;
+        width: calc(100% - 1rem);
+        margin: 0 0.5rem;
     }
 }
 
 @media (max-width: 1399px) {
     .wrapper {
-        width: calc(100% - 2rem);
-        margin: 0 1rem;
+        width: calc(100% - 1rem);
+        margin: 0 0.5rem;
     }
     .header-wrapper .navi-wrapper > .wrapper {
         justify-content: center;
@@ -659,6 +658,19 @@ body {
 }
 
 @media (max-width: 1199px) {
+    .footer-wrapper .wrapper > div {
+        font-size: 0.875em;
+    }
+    .footer-wrapper .wrapper > :nth-child(1) {
+        padding-right: 1.5em;
+    }
+    .footer-wrapper .wrapper > :nth-child(2) {
+        padding: 1.5em;
+    }
+    .footer-wrapper .wrapper > :nth-child(3) {
+        padding-right: 1.5em;
+        padding-left: 1.5em;
+    }
 }
 
 @media (max-width: 991px) {
@@ -692,6 +704,36 @@ body {
     }
     .bt-moving-top {
         display: none;
+    }
+    .footer-wrapper .wrapper {
+        flex-wrap: wrap;
+    }
+    .footer-wrapper .wrapper > div {
+        font-size: 0.875em;
+        margin-bottom: 1.5em;
+    }
+    .footer-wrapper .wrapper > :nth-child(1) {
+        width: 100%;
+        padding-right: 1.5em;
+        padding-left: 1.5em;
+        padding-bottom: 1.5em;
+        border-bottom: 1px solid #3c4449;
+    }
+    .footer-wrapper .wrapper > :nth-child(2) {
+        width: 100%;
+        padding: 0 1.5em;
+        border-bottom: 1px solid #3c4449;
+    }
+    .footer-wrapper .wrapper > :nth-child(3) {
+        width: 100%;
+        padding-right: 1.5em;
+        padding-left: 1.5em;
+    }
+    .footer-wrapper .link-wrap {
+        flex-wrap: wrap;
+    }
+    .footer-wrapper .link-wrap > div {
+        width: 100%;
     }
 }
 
