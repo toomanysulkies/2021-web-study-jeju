@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&display=swap');
 /* font-family: 'Noto Sans KR', sans-serif; */
 /* font-family: 'Jost', sans-serif; */
+
 /********************** 글로벌 설정 *********************/
 html,
 body {
@@ -95,7 +96,27 @@ body {
     transform: translateY(-0.25em);
 }
 
-/*********** slick-pager ************/
+/*********** pager ************/
+.pager-wrapper .pager {
+    border: 1px solid #fff;
+    border-radius: 50%;
+    background-color: #ccc;
+    width: 14px;
+    height: 14px;
+    margin: 0 4px;
+    cursor: pointer;
+    display: inline-block;
+    transition: all 0.5s;
+    transform: scale(0.6);
+    opacity: 1;
+}
+.pager-wrapper .pager.active {
+    border: 1px solid #fff;
+    background-color: transparent;
+    transform: scale(1);
+    opacity: 1;
+}
+
 .slick-dots li button {
     display: none;
 }
@@ -257,17 +278,19 @@ body {
 
 .header-wrapper .navi-wrapper > .wrapper {
     display: flex;
+    flex-wrap: wrap;
 }
 .header-wrapper .logo-wrap {
     order: 2;
-    flex-basis: 254px;
+    width: 254px;
     padding: 1.5em 0;
+    text-align: center;
 }
 .header-wrapper .logo-color {
     display: none;
 }
 .header-wrapper .navi-wrap {
-    flex-basis: calc(50% - 127px);
+    width: calc(50% - 127px);
     display: flex;
 }
 .header-wrapper .navi-wrap-lt {
@@ -283,21 +306,23 @@ body {
     display: flex;
     align-items: center;
 }
-.header-wrapper .navi.has-sub.active::after {
+.header-wrapper .navi > a {
+    flex-grow: 1;
+    font-size: 1.125em;
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0.75);
+    position: relative;
+}
+.header-wrapper .navi.has-sub.active > a::after {
     width: 40px;
     height: 2px;
     background-color: #b38859;
     content: '';
     display: block;
     position: absolute;
-    transform-origin: left;
     transform: rotate(90deg);
-    top: 70px;
-    left: calc(50% - 1px);
-}
-.header-wrapper .navi > a {
-    font-size: 1.125em;
-    text-shadow: 0 0 8px rgba(0, 0, 0, 0.75);
+    left: calc(50% - 20px);
+    top: 50px;
+    z-index: 9;
 }
 .header-wrapper .navi:first-child {
     margin-left: 0;
@@ -577,16 +602,95 @@ body {
         width: calc(100% - 2rem);
         margin: 0 1rem;
     }
+    .header-wrapper .navi-wrapper > .wrapper {
+        justify-content: center;
+    }
+    .header-wrapper .logo-wrap {
+        width: 100%;
+        order: 1;
+    }
+    .header-wrapper .navi-wrap {
+        order: 2;
+        width: auto;
+    }
+    .header-wrapper .navi {
+        padding-bottom: 1.5em;
+    }
+    .header-wrapper .navi > .sub-wrapper {
+        top: 70px;
+    }
+    .header-wrapper .navi-wrap > :nth-child(3) > .sub-wrapper {
+        left: -329px;
+        width: 992px;
+    }
 }
 
 @media (max-width: 1199px) {
 }
 
 @media (max-width: 991px) {
+    .header-wrapper .navi {
+        position: static;
+        padding: 0 0.75em 2em 0.75em;
+    }
+    .header-wrapper .navi > .sub-wrapper {
+        top: 140px !important;
+        left: -16px !important;
+        width: calc(100% + 32px) !important;
+        right: auto !important;
+    }
+    .header-wrapper .navi.navi-book {
+        display: none;
+    }
+    .header-wrapper .sub-wrap .list-wrap {
+        display: block;
+    }
+    .header-wrapper .sub-wrap .lists {
+        flex-grow: 1;
+        padding: 0;
+        margin-bottom: 1em;
+    }
+    .header-wrapper .sub-wrap .lists:not(:last-child) {
+        border-right: none;
+    }
+    .header-wrapper .sub-wrap .list {
+        display: inline-block;
+        margin-right: 1em;
+    }
 }
 
 @media (max-width: 767px) {
+    .notice-wrapper {
+        display: none !important;
+    }
+    .link-wrapper {
+        display: none !important;
+    }
 }
 
 @media (max-width: 575px) {
+    .header-wrapper .link-wrap {
+        justify-content: center;
+    }
+    .header-wrapper .link-wrap > .link:not(.link-lang) {
+        padding: 0 1em;
+    }
+    .header-wrapper .link-lang {
+        padding-left: 1em;
+    }
+    .header-wrapper .navi {
+        font-size: 0.625em;
+        padding: 0 0.5em 2em 0.5em;
+    }
+    .header-wrapper .navi.has-sub.active > a::after {
+        top: 35px;
+    }
+    .header-wrapper .navi > .sub-wrapper {
+        top: 120px !important;
+        max-height: 80vh;
+        overflow: auto;
+    }
+    .footer-wrapper {
+        display: none;
+    }
 }

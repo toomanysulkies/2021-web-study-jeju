@@ -54,6 +54,7 @@ $(function () {
             $header.css('top', 0);
             $header.addClass('active');
         }
+        if (isMobile) $header.addClass('active');
     }
 
     function movingTop(scTop) {

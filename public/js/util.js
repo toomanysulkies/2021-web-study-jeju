@@ -3,6 +3,8 @@
 || (OR 연산자) - 둘 중 하나만 true여도 true를 반환 / 둘 다 false일때만 false를 반환
 */
 
+/****************** mobile check ********************/
+var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 /****************** regExp ********************/
 // Email 정규표현식
 function validEmail(v) {

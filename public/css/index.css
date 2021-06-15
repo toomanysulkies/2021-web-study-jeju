@@ -838,6 +838,12 @@ section.sns-wrapper {
 }
 
 @media (max-width: 991px) {
+    .main-wrapper .slide .slide-title {
+        font-size: 9vw;
+    }
+    .main-wrapper .info-stage {
+        display: none;
+    }
 }
 
 @media (max-width: 767px) {
