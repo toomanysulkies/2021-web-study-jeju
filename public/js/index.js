@@ -413,7 +413,7 @@ $(function () {
         }
 
         /********* User Function *********/
-        emailjs.init('user_TROFqVnbPGZyygPAci7nt'); // 본인거로 꼭 바꿔넣으세요.
+        emailjs.init('user_qy9VVDk0BDS9SmFEEMW4h'); // 본인거로 꼭 바꿔넣으세요.
     }
 
     /********* Global Function *********/
